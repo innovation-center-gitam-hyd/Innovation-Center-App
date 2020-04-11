@@ -11,7 +11,7 @@ class _MyProfileState extends State<MyProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Innovation Center"),
+        title: Text("Innovation Center",style: TextStyle(fontFamily: 'TimesNewRoman'),),
         backgroundColor: Colors.black,
         actions: <Widget>[IconButton(icon: Icon(Icons.settings), onPressed: (){})],
         leading: IconButton(
@@ -44,7 +44,8 @@ class _MyProfileState extends State<MyProfile> {
                 ),
               ],
             ),
-            Text("data"),
+            Text("Name"),
+            
           ],
         ),
       ),
