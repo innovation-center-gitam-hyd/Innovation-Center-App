@@ -11,12 +11,17 @@ class _MyProfileState extends State<MyProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Innovation Center",style: TextStyle(fontFamily: 'TimesNewRoman'),),
+        title: Text(
+          "Innovation Center",
+          style: TextStyle(fontFamily: 'TimesNewRoman'),
+        ),
         backgroundColor: Colors.black,
-        actions: <Widget>[IconButton(icon: Icon(Icons.settings), onPressed: (){})],
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.settings), onPressed: () {})
+        ],
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
-          onPressed: ()=>Navigator.pop(context),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: SingleChildScrollView(
@@ -32,20 +37,36 @@ class _MyProfileState extends State<MyProfile> {
                     color: Colors.black,
                   ),
                 ),
-                Container(
-                  height: MediaQuery.of(context).size.height / 3.5,
-                  alignment: Alignment.bottomCenter,
-                  child: CircleAvatar(
-                    radius: MediaQuery.of(context).size.height / 10,
-                    backgroundImage: NetworkImage(
-                        "http://innovationcenter.gitam.edu/teamfiles/team1920/images/ICP905d42fab599927.jpeg"),
-                    backgroundColor: Colors.white10,
-                  ),
+                Stack(
+                  children: <Widget>[
+                    Container(
+                      height: MediaQuery.of(context).size.height / 3.5,
+                      alignment: Alignment.bottomCenter,
+                      child: CircleAvatar(
+                        radius: MediaQuery.of(context).size.height / 10,
+                        backgroundColor: Colors.grey,
+                        child: Icon(
+                          Icons.person,
+                          size: MediaQuery.of(context).size.height / 7,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height / 3.5,
+                      alignment: Alignment.bottomCenter,
+                      child: CircleAvatar(
+                        radius: MediaQuery.of(context).size.height / 10,
+                        backgroundColor: Colors.transparent,
+                        backgroundImage: NetworkImage(
+                            "http://innovationcenter.gitam.edu/teamfiles/team1920/images/ICP905d42fab599927.jpeg"),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
             Text("Name"),
-            
           ],
         ),
       ),
