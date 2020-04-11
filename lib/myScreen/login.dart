@@ -59,10 +59,10 @@ class _LoginState extends State<Login> {
               ),
             ),
             Padding(padding: EdgeInsets.all(10)),
-            Container(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
               child: Column(
-                children: <Widget>[
+                children: [
                   TextField(
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
@@ -114,27 +114,25 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   SizedBox(height: 40.0),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
-                    child: RaisedButton(
-                      padding: EdgeInsets.symmetric(horizontal: 50),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(18.0),
-                      ),
-                      onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MyDashboard())),
-                      child: Text(
-                        "LOGIN",
-                        style: TextStyle(color: Colors.white, fontSize: 18),
-                      ),
-                      color: Colors.black,
-                      elevation: 7,
-                    ),
-                  ),
                 ],
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              child: RaisedButton(
+                padding: EdgeInsets.symmetric(horizontal: 50),
+                shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(18.0),
+                ),
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyDashboard())),
+                child: Text(
+                  "LOGIN",
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
+                color: Colors.black,
+                elevation: 7,
               ),
             ),
           ],
