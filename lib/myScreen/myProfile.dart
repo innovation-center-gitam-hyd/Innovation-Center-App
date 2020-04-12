@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:ic_inventory/myScreen/login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MyProfile extends StatefulWidget {
   @override
@@ -7,9 +9,11 @@ class MyProfile extends StatefulWidget {
 }
 
 class _MyProfileState extends State<MyProfile> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.arrow_back_ios),
@@ -21,7 +25,9 @@ class _MyProfileState extends State<MyProfile> {
         ),
         backgroundColor: Colors.black,
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.settings), onPressed: () {})
+          IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () => _scaffoldKey.currentState.openEndDrawer())
         ],
         centerTitle: true,
       ),
@@ -69,7 +75,8 @@ class _MyProfileState extends State<MyProfile> {
             ),
             Card(
               elevation: 7,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
               margin: EdgeInsets.all(20),
               child: Padding(
                 padding: const EdgeInsets.all(20),
@@ -96,7 +103,8 @@ class _MyProfileState extends State<MyProfile> {
                           children: [
                             RichText(
                               text: TextSpan(
-                                style: TextStyle(color: Colors.black,fontSize: 16),
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 16),
                                 children: [
                                   TextSpan(text: 'Name : '),
                                   TextSpan(text: 'Rajeep Ray')
@@ -105,7 +113,8 @@ class _MyProfileState extends State<MyProfile> {
                             ),
                             RichText(
                               text: TextSpan(
-                                style: TextStyle(color: Colors.black,fontSize: 16),
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 16),
                                 children: [
                                   TextSpan(text: 'Email : '),
                                   TextSpan(text: 'demomail@gmail.com')
@@ -114,7 +123,8 @@ class _MyProfileState extends State<MyProfile> {
                             ),
                             RichText(
                               text: TextSpan(
-                                style: TextStyle(color: Colors.black,fontSize: 16),
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 16),
                                 children: [
                                   TextSpan(text: 'Phone Number : '),
                                   TextSpan(text: '1234567895')
@@ -123,7 +133,8 @@ class _MyProfileState extends State<MyProfile> {
                             ),
                             RichText(
                               text: TextSpan(
-                                style: TextStyle(color: Colors.black,fontSize: 16),
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 16),
                                 children: [
                                   TextSpan(text: 'Pin Number : '),
                                   TextSpan(text: '221910304039')
@@ -142,6 +153,22 @@ class _MyProfileState extends State<MyProfile> {
                 ),
               ),
             )
+          ],
+        ),
+      ),
+      endDrawer: Drawer(
+        child: ListView(
+          children: [
+            ListTile(
+              title: Text("Logout"),
+              trailing: Icon(Icons.exit_to_app),
+              onTap: () async {
+                final prefs = await SharedPreferences.getInstance();
+                await prefs.setString("jwt", null);
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Login()));
+              },
+            ),
           ],
         ),
       ),

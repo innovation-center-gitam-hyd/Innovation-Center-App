@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ic_inventory/myScreen/dashboard.dart';
 import 'package:ic_inventory/myScreen/login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,8 +25,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool _isJWT=false;
+  Future<void> _getJWT() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      print(prefs.getString("jwt"));
+      _isJWT = prefs.getString("jwt") == null || prefs.getString("jwt").toString().compareTo("")==0 ? false : true;
+    });
+  }
+
+  @override
+  void initState() {
+    _getJWT();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Login();
+    print(_isJWT);
+    return _isJWT==true?MyDashboard():Login();
   }
 }

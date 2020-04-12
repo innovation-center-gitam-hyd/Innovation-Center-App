@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:ic_inventory/myScreen/dashboard.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -7,6 +11,32 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  Future<String> attemptLogIn(String username, String password) async {
+    const String _url =
+        "https://innovationcenter.gitam.edu/login/api/login.php";
+    var res =
+        await http.post(_url, body: {"email": username, "password": password});
+    if (res.statusCode == 200) return json.decode(res.body)['jwt'];
+    return null;
+  }
+
+  Future<String> errorLogIn(String username, String password) async {
+    const String _url =
+        "https://innovationcenter.gitam.edu/login/api/login.php";
+    var res =
+        await http.post(_url, body: {"email": username, "password": password});
+    return json.decode(res.body)['message'];
+  }
+
+  void displayDialog(context, title, text) => showDialog(
+        context: context,
+        builder: (context) =>
+            AlertDialog(title: Text(title), content: Text(text)),
+      );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,6 +91,7 @@ class _LoginState extends State<Login> {
                 child: Column(
                   children: [
                     TextField(
+                      controller: _usernameController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                           labelText: '\tEMAIL',
@@ -79,6 +110,7 @@ class _LoginState extends State<Login> {
                     ),
                     SizedBox(height: 20.0),
                     TextField(
+                      controller: _passwordController,
                       decoration: InputDecoration(
                         labelText: '\tPASSWORD',
                         labelStyle: TextStyle(
@@ -119,19 +151,30 @@ class _LoginState extends State<Login> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(15))),
                 child: RaisedButton(
-                  padding: EdgeInsets.symmetric(horizontal: 50),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(18.0),
-                  ),
-                  onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MyDashboard())),
-                  child: Text(
-                    "LOGIN",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                  color: Colors.black,
-                  elevation: 7,
-                ),
+                    padding: EdgeInsets.symmetric(horizontal: 50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(18.0),
+                    ),
+                    child: Text(
+                      "LOGIN",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                    color: Colors.black,
+                    elevation: 7,
+                    onPressed: () async {
+                      var _jwt = await attemptLogIn(
+                          _usernameController.text, _passwordController.text);
+                      print(_jwt);
+                      if (_jwt != null) {
+                        final prefs = await SharedPreferences.getInstance();
+                        await prefs.setString("jwt", _jwt);
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MyDashboard()));
+                      } else {
+                        var _err=await errorLogIn(_usernameController.text, _passwordController.text);
+                        displayDialog(context, "An Error Occurred",
+                            "$_err");
+                      }
+                    }),
               ),
             ],
           ),
