@@ -41,13 +41,12 @@ class _MyDashboardState extends State<MyDashboard> {
                                         horizontal: 15,
                                         vertical: 10,
                                       ),
-                                      child: Image(
-                                        height: (MediaQuery.of(context)
-                                                .size
-                                                .height /
-                                            8),
-                                        image: NetworkImage(
-                                            "https://innovationcenter.gitam.edu/images/Logo.png"),
+                                      child: SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                8,
+                                        child: Image.asset(
+                                            'assets/images/IC_Logo.png'),
                                       ),
                                     ),
                                   ),
@@ -106,14 +105,25 @@ class _MyDashboardState extends State<MyDashboard> {
                                           builder: (context) => MyProfile(),
                                         ),
                                       ),
-                                      child: CircleAvatar(
-                                        radius:
-                                            MediaQuery.of(context).size.height /
-                                                30,
-                                        backgroundColor: Colors.grey,
-                                        backgroundImage: NetworkImage(
-                                          "http://innovationcenter.gitam.edu/teamfiles/team1920/images/ICP905d42fab599927.jpeg",
-                                        ),
+                                      child: Stack(
+                                        children: <Widget>[
+                                          CircleAvatar(
+                                            radius: MediaQuery.of(context).size.height /30,
+                                            backgroundColor: Colors.grey,
+                                            child: Icon(
+                                              Icons.person,
+                                              size: MediaQuery.of(context).size.height / 25,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          CircleAvatar(
+                                            radius: MediaQuery.of(context).size.height /30,
+                                            backgroundColor: Colors.transparent,
+                                            backgroundImage: NetworkImage(
+                                              "http://innovationcenter.gitam.edu/teamfiles/team1920/images/ICP905d42fab599927.jpeg",
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
