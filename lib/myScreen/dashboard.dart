@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:ic_inventory/myScreen/myProfile.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MyDashboard extends StatefulWidget {
   @override
@@ -35,7 +36,14 @@ class _MyDashboardState extends State<MyDashboard> {
                                     flex: 1,
                                   ),
                                   GestureDetector(
-                                    onTap: () => print("Innovation Center"),
+                                    onTap: () async {
+                                      const url = 'https://innovationcenter.gitam.edu/';
+                                      if (await canLaunch(url)) {
+                                        await launch(url);
+                                      } else {
+                                        throw 'Could not launch $url';
+                                      }
+                                    },
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 15,
@@ -108,16 +116,25 @@ class _MyDashboardState extends State<MyDashboard> {
                                       child: Stack(
                                         children: <Widget>[
                                           CircleAvatar(
-                                            radius: MediaQuery.of(context).size.height /30,
+                                            radius: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                30,
                                             backgroundColor: Colors.grey,
                                             child: Icon(
                                               Icons.person,
-                                              size: MediaQuery.of(context).size.height / 25,
+                                              size: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  25,
                                               color: Colors.white,
                                             ),
                                           ),
                                           CircleAvatar(
-                                            radius: MediaQuery.of(context).size.height /30,
+                                            radius: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                30,
                                             backgroundColor: Colors.transparent,
                                             backgroundImage: NetworkImage(
                                               "http://innovationcenter.gitam.edu/teamfiles/team1920/images/ICP905d42fab599927.jpeg",
