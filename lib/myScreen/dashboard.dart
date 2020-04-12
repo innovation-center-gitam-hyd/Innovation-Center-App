@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:ic_inventory/myScreen/inventory.dart';
+import 'package:ic_inventory/myScreen/myItems.dart';
 import 'package:ic_inventory/myScreen/myProfile.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -9,7 +11,7 @@ class MyDashboard extends StatefulWidget {
 }
 
 class _MyDashboardState extends State<MyDashboard> {
-  bool isAdmin = false;
+  bool _isAdmin = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -174,6 +176,7 @@ class _MyDashboardState extends State<MyDashboard> {
                       ),
                     ),
                     trailing: Icon(Icons.arrow_forward_ios),
+                    onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>MyInventory())),
                   ),
                   color: Color(0xFFF5F5F5),
                 ),
@@ -189,10 +192,11 @@ class _MyDashboardState extends State<MyDashboard> {
                       ),
                     ),
                     trailing: Icon(Icons.arrow_forward_ios),
+                    onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>MyItems())),
                   ),
                   color: Color(0xFFF5F5F5),
                 ),
-                isAdmin
+                _isAdmin
                     ? Card(
                         margin:
                             EdgeInsets.symmetric(horizontal: 10, vertical: 5),

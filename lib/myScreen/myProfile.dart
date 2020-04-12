@@ -11,18 +11,19 @@ class _MyProfileState extends State<MyProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () => Navigator.pop(context),
+        ),
         title: Text(
           "Innovation Center",
-          style: TextStyle(fontFamily: 'TimesNewRoman'),
+          style: TextStyle(fontFamily: 'TimesNewRoman', fontSize: 25),
         ),
         backgroundColor: Colors.black,
         actions: <Widget>[
           IconButton(icon: Icon(Icons.settings), onPressed: () {})
         ],
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          onPressed: () => Navigator.pop(context),
-        ),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -66,7 +67,81 @@ class _MyProfileState extends State<MyProfile> {
                 ),
               ],
             ),
-            Text("Name"),
+            Card(
+              elevation: 7,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+              margin: EdgeInsets.all(20),
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "My Profile",
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: [
+                        Spacer(
+                          flex: 2,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            RichText(
+                              text: TextSpan(
+                                style: TextStyle(color: Colors.black,fontSize: 16),
+                                children: [
+                                  TextSpan(text: 'Name : '),
+                                  TextSpan(text: 'Rajeep Ray')
+                                ],
+                              ),
+                            ),
+                            RichText(
+                              text: TextSpan(
+                                style: TextStyle(color: Colors.black,fontSize: 16),
+                                children: [
+                                  TextSpan(text: 'Email : '),
+                                  TextSpan(text: 'demomail@gmail.com')
+                                ],
+                              ),
+                            ),
+                            RichText(
+                              text: TextSpan(
+                                style: TextStyle(color: Colors.black,fontSize: 16),
+                                children: [
+                                  TextSpan(text: 'Phone Number : '),
+                                  TextSpan(text: '1234567895')
+                                ],
+                              ),
+                            ),
+                            RichText(
+                              text: TextSpan(
+                                style: TextStyle(color: Colors.black,fontSize: 16),
+                                children: [
+                                  TextSpan(text: 'Pin Number : '),
+                                  TextSpan(text: '221910304039')
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        Spacer(
+                          flex: 3,
+                        )
+                      ],
+                    ),
+                    Padding(padding: EdgeInsets.all(5)),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
