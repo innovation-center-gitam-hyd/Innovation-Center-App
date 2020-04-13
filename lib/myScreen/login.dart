@@ -40,7 +40,6 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //resizeToAvoidBottomPadding: false,
       backgroundColor: Color(0xFFfffafa),
       body: Column(
         children: <Widget>[

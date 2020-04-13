@@ -21,31 +21,7 @@ class _MyInventoryState extends State<MyInventory> {
         ),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          Container(
-            color: Colors.black,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Center(
-                    child: Text(
-                      "Inventory List",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
+      body: Column()
     );
   }
 }
