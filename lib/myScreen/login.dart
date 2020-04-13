@@ -42,141 +42,145 @@ class _LoginState extends State<Login> {
     return Scaffold(
       //resizeToAvoidBottomPadding: false,
       backgroundColor: Color(0xFFfffafa),
-      body: Stack(
+      body: Column(
         children: <Widget>[
-          Container(
-            height: MediaQuery.of(context).size.height / 30,
-            color: Colors.black,
-          ),
-          ListView(
-            children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(40),
-                      bottomRight: Radius.circular(40)),
-                ),
-                height: MediaQuery.of(context).size.height / 2,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height / 4,
-                        width: MediaQuery.of(context).size.height / 4,
-                        child: Image.asset('assets/images/IC_Logo.png'),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 15),
-                        child: ListTile(
-                          title: Text(
-                            "INNOVATION CENTER",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'TimesNewRoman',
-                              fontSize: 23,
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(40),
+                          bottomRight: Radius.circular(40)),
+                    ),
+                    height: MediaQuery.of(context).size.height / 2,
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height / 4,
+                            width: MediaQuery.of(context).size.height / 4,
+                            child: Image.asset('assets/images/IC_Logo.png'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 15),
+                            child: ListTile(
+                              title: Text(
+                                "INNOVATION CENTER",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'TimesNewRoman',
+                                  fontSize: 23,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      )
-                    ],
+                          )
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Padding(padding: EdgeInsets.all(10)),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30),
-                child: Column(
-                  children: [
-                    TextField(
-                      controller: _usernameController,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                          labelText: '\tEMAIL',
-                          labelStyle: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black87,
+                  Padding(padding: EdgeInsets.all(10)),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30),
+                    child: Column(
+                      children: [
+                        TextField(
+                          controller: _usernameController,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                              labelText: '\tEMAIL',
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black87,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black),
+                              ),
+                              prefixIcon: Icon(
+                                Icons.mail,
+                                color: Colors.black45,
+                                size: 18,
+                              )),
+                        ),
+                        SizedBox(height: 20.0),
+                        TextField(
+                          controller: _passwordController,
+                          decoration: InputDecoration(
+                            labelText: '\tPASSWORD',
+                            labelStyle: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black87,
+                            ),
+                            prefixIcon: Icon(
+                              Icons.vpn_key,
+                              color: Colors.black45,
+                              size: 18,
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black),
+                            ),
                           ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black),
-                          ),
-                          prefixIcon: Icon(
-                            Icons.mail,
-                            color: Colors.black45,
-                            size: 18,
-                          )),
-                    ),
-                    SizedBox(height: 20.0),
-                    TextField(
-                      controller: _passwordController,
-                      decoration: InputDecoration(
-                        labelText: '\tPASSWORD',
-                        labelStyle: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black87,
+                          obscureText: true,
                         ),
-                        prefixIcon: Icon(
-                          Icons.vpn_key,
-                          color: Colors.black45,
-                          size: 18,
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black),
-                        ),
-                      ),
-                      obscureText: true,
-                    ),
-                    SizedBox(height: 5.0),
-                    Container(
-                      alignment: Alignment(1.0, 0.0),
-                      padding: EdgeInsets.only(top: 15.0, left: 20),
-                      child: InkWell(
-                        child: Text(
-                          'Forgot Password ?',
-                          style: TextStyle(
-                            color: Colors.black87,
-                            decoration: TextDecoration.underline,
+                        SizedBox(height: 5.0),
+                        Container(
+                          alignment: Alignment(1.0, 0.0),
+                          padding: EdgeInsets.only(top: 15.0, left: 20),
+                          child: InkWell(
+                            child: Text(
+                              'Forgot Password ?',
+                              style: TextStyle(
+                                color: Colors.black87,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                        SizedBox(height: 40.0),
+                      ],
                     ),
-                    SizedBox(height: 40.0),
-                  ],
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 50),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(15))),
-                child: RaisedButton(
+                  ),
+                  Container(
                     padding: EdgeInsets.symmetric(horizontal: 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(18.0),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                    child: RaisedButton(
+                      padding: EdgeInsets.symmetric(horizontal: 50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(18.0),
+                      ),
+                      child: Text(
+                        "LOGIN",
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                      color: Colors.black,
+                      elevation: 7,
+                      onPressed: () async {
+                        var _jwt = await attemptLogIn(
+                            _usernameController.text, _passwordController.text);
+                        print(_jwt);
+                        if (_jwt != null) {
+                          final prefs = await SharedPreferences.getInstance();
+                          await prefs.setString("jwt", _jwt);
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => MyDashboard()));
+                        } else {
+                          var _err = await errorLogIn(_usernameController.text,
+                              _passwordController.text);
+                          displayDialog(context, "An Error Occurred", "$_err");
+                        }
+                      },
                     ),
-                    child: Text(
-                      "LOGIN",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                    color: Colors.black,
-                    elevation: 7,
-                    onPressed: () async {
-                      var _jwt = await attemptLogIn(
-                          _usernameController.text, _passwordController.text);
-                      print(_jwt);
-                      if (_jwt != null) {
-                        final prefs = await SharedPreferences.getInstance();
-                        await prefs.setString("jwt", _jwt);
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>MyDashboard()));
-                      } else {
-                        var _err=await errorLogIn(_usernameController.text, _passwordController.text);
-                        displayDialog(context, "An Error Occurred",
-                            "$_err");
-                      }
-                    }),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ],
       ),

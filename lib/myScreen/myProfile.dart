@@ -165,8 +165,11 @@ class _MyProfileState extends State<MyProfile> {
               onTap: () async {
                 final prefs = await SharedPreferences.getInstance();
                 await prefs.setString("jwt", null);
-                Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => Login()));
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => Login()),
+                  (route) => false,
+                );
               },
             ),
           ],
