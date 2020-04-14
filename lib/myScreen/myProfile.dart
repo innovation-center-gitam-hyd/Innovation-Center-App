@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:ic_inventory/myScreen/login.dart';
@@ -10,6 +12,26 @@ class MyProfile extends StatefulWidget {
 
 class _MyProfileState extends State<MyProfile> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  String _userName, _pinNo, _email;
+  var _data;
+  Future<void> _getInfo() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    _data = json.decode(ascii.decode(base64.decode(
+        base64.normalize(prefs.getString('jwt').toString().split(".")[1]))));
+    setState(() {
+      _userName = _data['name'].toString();
+      _pinNo = _data['pin'].toString();
+      _email = _data['email'].toString();
+    });
+  }
+
+  @override
+  void initState() {
+    _getInfo();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,57 +88,79 @@ class _MyProfileState extends State<MyProfile> {
                         radius: MediaQuery.of(context).size.height / 10,
                         backgroundColor: Colors.transparent,
                         backgroundImage: NetworkImage(
-                            "http://innovationcenter.gitam.edu/teamfiles/team1920/images/ICP905d42fab599927.jpeg"),
+                            "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/40e2d62dd7cbffcce6f070c3ae1098a1c645be97785c37d43b1d97aa04b0ed2f._RI_V_TTW_.jpg"),
                       ),
                     ),
                   ],
                 ),
               ],
             ),
-            Card(
-              elevation: 7,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              margin: EdgeInsets.all(20),
-              child: Padding(
-                padding: const EdgeInsets.all(15),
-                child: Row(
-                  //mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Spacer(flex: 4,),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Name :"),
-                        Text("Pin Number :"),
-                        Text("Team :"),
-                        Text("Email :"),
-                        Text("Phone Number :"),
-                      ],
+            _data != null
+                ? Card(
+                    elevation: 7,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    margin: EdgeInsets.all(20),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Row(
+                        //mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Spacer(
+                            flex: 4,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Name :"),
+                              Text("Pin Number :"),
+                              //Text("Team :"),
+                              Text("Email :"),
+                              //Text("Phone Number :"),
+                            ],
+                          ),
+                          Spacer(
+                            flex: 1,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(_userName),
+                              Text(_pinNo),
+                              //Text("Code Crew"),
+                              Text(_email),
+                              //Text("124573698"),
+                            ],
+                          ),
+                          Spacer(
+                            flex: 4,
+                          )
+                        ],
+                      ),
                     ),
-                    Spacer(flex: 1,),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Rajdeep Ray"),
-                        Text("221910304039"),
-                        Text("Code Crew"),
-                        Text("demo123@gmail.com"),
-                        Text("124573698"),
-                      ],
+                  )
+                : Center(
+                  child: SizedBox(
+                      height: 50,
+                      width: 50,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(Colors.grey),
+                        ),
+                      ),
                     ),
-                    Spacer(flex: 4,)
-                  ],
-                ),
-              ),
-            )
+                )
           ],
         ),
       ),
       endDrawer: Drawer(
         child: ListView(
           children: [
-            DrawerHeader(child: Center(child: Text("Settings")),decoration: BoxDecoration(color: Colors.grey),),
+            DrawerHeader(
+              child: Center(child: Text("Settings")),
+              decoration: BoxDecoration(color: Colors.grey),
+            ),
             ListTile(
               title: Text("Logout"),
               trailing: Icon(Icons.exit_to_app),

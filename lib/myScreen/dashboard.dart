@@ -23,10 +23,8 @@ class _MyDashboardState extends State<MyDashboard> {
     var _mem, _data;
     setState(() {
       _data = prefs.getString('jwt').toString().split(".");
-      print(json.decode(
-          ascii.decode(base64.decode(base64.normalize(_data[1]))))['member']);
-      _mem = int.parse(json.decode(
-          ascii.decode(base64.decode(base64.normalize(_data[1]))))['member']);
+      print(json.decode(ascii.decode(base64.decode(base64.normalize(_data[1]))))['member']);
+      _mem = int.parse(json.decode(ascii.decode(base64.decode(base64.normalize(_data[1]))))['member']);
       _isAdmin = _mem == 1 ? true : false;
     });
   }
@@ -166,7 +164,7 @@ class _MyDashboardState extends State<MyDashboard> {
                                               30,
                                           backgroundColor: Colors.transparent,
                                           backgroundImage: NetworkImage(
-                                            "http://innovationcenter.gitam.edu/teamfiles/team1920/images/ICP905d42fab599927.jpeg",
+                                            "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/40e2d62dd7cbffcce6f070c3ae1098a1c645be97785c37d43b1d97aa04b0ed2f._RI_V_TTW_.jpg",
                                           ),
                                         ),
                                       ],
