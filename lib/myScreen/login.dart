@@ -191,9 +191,11 @@ class _LoginState extends State<Login> {
 
                         var _jwt = await attemptLogIn(
                             _usernameController.text, _passwordController.text);
-                        print(_jwt);
+                        print("jwt :$_jwt");
                         if (_jwt != null) {
                           final prefs = await SharedPreferences.getInstance();
+                          var _jwtInfo=_jwt.toString().split(".");
+                          print(json.decode(ascii.decode(base64.decode(base64.normalize(_jwtInfo[1])))));
                           await prefs.setString("jwt", _jwt);
                           Navigator.pushAndRemoveUntil(
                             context,
@@ -204,15 +206,6 @@ class _LoginState extends State<Login> {
                         } else {
                           var _err = await errorLogIn(_usernameController.text,
                               _passwordController.text);
-
-                          /*Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => AlertDialog(
-                                  title: Text("Something went wrong!"),
-                                  content: Text(_err)),
-                            ),
-                          );*/
                           Navigator.pop(context);
                           displayDialog(
                               context, "Something went wrong!", "$_err");

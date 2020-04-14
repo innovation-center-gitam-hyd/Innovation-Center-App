@@ -25,12 +25,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool _isJWT=false;
+  bool _isJWT;
   Future<void> _getJWT() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       print(prefs.getString("jwt"));
-      _isJWT = prefs.getString("jwt") == null || prefs.getString("jwt").toString().compareTo("")==0 ? false : true;
+      _isJWT = prefs.getString("jwt") == null || prefs.getString("jwt").toString().compareTo("")==0 || prefs.getString("jwt").toString().split(".").length !=3? false : true;
     });
   }
 
@@ -43,6 +43,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     print(_isJWT);
-    return _isJWT==true?MyDashboard():Login();
+    return _isJWT==true?MyDashboard():(_isJWT==false?Login():Container(color: Colors.white,));
   }
 }

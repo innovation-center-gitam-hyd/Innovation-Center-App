@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
-import 'package:ic_inventory/myScreen/inventory.dart';
+import 'package:ic_inventory/myScreen/inventoryAdmin.dart';
 import 'package:ic_inventory/myScreen/myItems.dart';
 import 'package:ic_inventory/myScreen/myProfile.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MyDashboard extends StatefulWidget {
@@ -11,7 +15,27 @@ class MyDashboard extends StatefulWidget {
 }
 
 class _MyDashboardState extends State<MyDashboard> {
-  bool _isAdmin = true;
+  bool _isAdmin = false;
+
+  Future<void> _checkAdmin() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var _mem, _data;
+    setState(() {
+      _data = prefs.getString('jwt').toString().split(".");
+      print(json.decode(
+          ascii.decode(base64.decode(base64.normalize(_data[1]))))['member']);
+      _mem = int.parse(json.decode(
+          ascii.decode(base64.decode(base64.normalize(_data[1]))))['member']);
+      _isAdmin = _mem == 1 ? true : false;
+    });
+  }
+
+  @override
+  void initState() {
+    _checkAdmin();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,8 +137,10 @@ class _MyDashboardState extends State<MyDashboard> {
                                   child: GestureDetector(
                                     onTap: () => Navigator.push(
                                       context,
-                                      MaterialPageRoute(
-                                        builder: (context) => MyProfile(),
+                                      PageTransition(
+                                        child: MyProfile(),
+                                        type: PageTransitionType.scale,
+                                        alignment: Alignment.topRight,
                                       ),
                                     ),
                                     child: Stack(
@@ -176,7 +202,13 @@ class _MyDashboardState extends State<MyDashboard> {
                       ),
                     ),
                     trailing: Icon(Icons.arrow_forward_ios),
-                    onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>MyInventory())),
+                    onTap: () => Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.rightToLeft,
+                        child: MyProfile(),
+                      ),
+                    ),
                   ),
                   color: Color(0xFFF5F5F5),
                 ),
@@ -192,7 +224,13 @@ class _MyDashboardState extends State<MyDashboard> {
                       ),
                     ),
                     trailing: Icon(Icons.arrow_forward_ios),
-                    onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>MyItems())),
+                    onTap: () => Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.rightToLeft,
+                        child: MyItems(),
+                      ),
+                    ),
                   ),
                   color: Color(0xFFF5F5F5),
                 ),
@@ -210,6 +248,13 @@ class _MyDashboardState extends State<MyDashboard> {
                             ),
                           ),
                           trailing: Icon(Icons.arrow_forward_ios),
+                          onTap: () => Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeft,
+                              child: AdminMode(),
+                            ),
+                          ),
                         ),
                         color: Color(0xFFF5F5F5),
                       )

@@ -89,6 +89,7 @@ class _MyProfileState extends State<MyProfile> {
                       children: [
                         Text("Name :"),
                         Text("Pin Number :"),
+                        Text("Team :"),
                         Text("Email :"),
                         Text("Phone Number :"),
                       ],
@@ -99,6 +100,7 @@ class _MyProfileState extends State<MyProfile> {
                       children: [
                         Text("Rajdeep Ray"),
                         Text("221910304039"),
+                        Text("Code Crew"),
                         Text("demo123@gmail.com"),
                         Text("124573698"),
                       ],
