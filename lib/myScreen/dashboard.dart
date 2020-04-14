@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:ic_inventory/myScreen/inventory.dart';
 import 'package:ic_inventory/myScreen/inventoryAdmin.dart';
 import 'package:ic_inventory/myScreen/myItems.dart';
 import 'package:ic_inventory/myScreen/myProfile.dart';
@@ -206,7 +207,8 @@ class _MyDashboardState extends State<MyDashboard> {
                       context,
                       PageTransition(
                         type: PageTransitionType.rightToLeft,
-                        child: MyProfile(),
+                        duration: Duration(milliseconds: 150),
+                        child: MyInventory(),
                       ),
                     ),
                   ),
@@ -228,6 +230,7 @@ class _MyDashboardState extends State<MyDashboard> {
                       context,
                       PageTransition(
                         type: PageTransitionType.rightToLeft,
+                        duration: Duration(milliseconds: 150),
                         child: MyItems(),
                       ),
                     ),
@@ -252,6 +255,7 @@ class _MyDashboardState extends State<MyDashboard> {
                             context,
                             PageTransition(
                               type: PageTransitionType.rightToLeft,
+                              duration: Duration(milliseconds: 150),
                               child: AdminMode(),
                             ),
                           ),
