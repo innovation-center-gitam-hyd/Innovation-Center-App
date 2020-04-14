@@ -76,79 +76,34 @@ class _MyProfileState extends State<MyProfile> {
             Card(
               elevation: 7,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15)),
+                  borderRadius: BorderRadius.circular(10)),
               margin: EdgeInsets.all(20),
               child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                padding: const EdgeInsets.all(15),
+                child: Row(
+                  //mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "My Profile",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Row(
+                    Spacer(flex: 4,),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Spacer(
-                          flex: 2,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            RichText(
-                              text: TextSpan(
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 16),
-                                children: [
-                                  TextSpan(text: 'Name : '),
-                                  TextSpan(text: 'Rajeep Ray')
-                                ],
-                              ),
-                            ),
-                            RichText(
-                              text: TextSpan(
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 16),
-                                children: [
-                                  TextSpan(text: 'Email : '),
-                                  TextSpan(text: 'demomail@gmail.com')
-                                ],
-                              ),
-                            ),
-                            RichText(
-                              text: TextSpan(
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 16),
-                                children: [
-                                  TextSpan(text: 'Phone Number : '),
-                                  TextSpan(text: '1234567895')
-                                ],
-                              ),
-                            ),
-                            RichText(
-                              text: TextSpan(
-                                style: TextStyle(
-                                    color: Colors.black, fontSize: 16),
-                                children: [
-                                  TextSpan(text: 'Pin Number : '),
-                                  TextSpan(text: '221910304039')
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        Spacer(
-                          flex: 3,
-                        )
+                        Text("Name :"),
+                        Text("Pin Number :"),
+                        Text("Email :"),
+                        Text("Phone Number :"),
                       ],
                     ),
-                    Padding(padding: EdgeInsets.all(5)),
+                    Spacer(flex: 1,),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Rajdeep Ray"),
+                        Text("221910304039"),
+                        Text("demo123@gmail.com"),
+                        Text("124573698"),
+                      ],
+                    ),
+                    Spacer(flex: 4,)
                   ],
                 ),
               ),
@@ -159,6 +114,7 @@ class _MyProfileState extends State<MyProfile> {
       endDrawer: Drawer(
         child: ListView(
           children: [
+            DrawerHeader(child: Center(child: Text("Settings")),decoration: BoxDecoration(color: Colors.grey),),
             ListTile(
               title: Text("Logout"),
               trailing: Icon(Icons.exit_to_app),

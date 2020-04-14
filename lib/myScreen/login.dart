@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:ic_inventory/myScreen/dashboard.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -33,8 +34,25 @@ class _LoginState extends State<Login> {
 
   void displayDialog(context, title, text) => showDialog(
         context: context,
-        builder: (context) =>
-            AlertDialog(title: Text(title), content: Text(text)),
+        //barrierDismissible: false,
+        builder: (context) => AlertDialog(
+          title: Text(title),
+          content: Text(text),
+        ),
+      );
+
+  void loginDialog(context) => showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => AlertDialog(
+          title: ListTile(
+            title: Text("Loging in.."),
+            trailing: CircularProgressIndicator(
+              backgroundColor: Colors.transparent,
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.grey),
+            ),
+          ),
+        ),
       );
 
   @override
@@ -109,20 +127,20 @@ class _LoginState extends State<Login> {
                         TextField(
                           controller: _passwordController,
                           decoration: InputDecoration(
-                            labelText: '\tPASSWORD',
-                            labelStyle: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black87,
-                            ),
-                            prefixIcon: Icon(
-                              Icons.vpn_key,
-                              color: Colors.black45,
-                              size: 18,
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.black),
-                            ),
-                          ),
+                              labelText: '\tPASSWORD',
+                              labelStyle: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black87,
+                              ),
+                              prefixIcon: Icon(
+                                Icons.vpn_key,
+                                color: Colors.black45,
+                                size: 18,
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black),
+                              ),
+                              alignLabelWithHint: true),
                           obscureText: true,
                         ),
                         SizedBox(height: 5.0),
@@ -130,6 +148,16 @@ class _LoginState extends State<Login> {
                           alignment: Alignment(1.0, 0.0),
                           padding: EdgeInsets.only(top: 15.0, left: 20),
                           child: InkWell(
+                            hoverColor: Colors.transparent,
+                            onTap: () async {
+                              const url =
+                                  'https://innovationcenter.gitam.edu/login/resetpassword/';
+                              if (await canLaunch(url)) {
+                                await launch(url);
+                              } else {
+                                throw 'Could not launch $url';
+                              }
+                            },
                             child: Text(
                               'Forgot Password ?',
                               style: TextStyle(
@@ -159,20 +187,35 @@ class _LoginState extends State<Login> {
                       color: Colors.black,
                       elevation: 7,
                       onPressed: () async {
+                        loginDialog(context);
+
                         var _jwt = await attemptLogIn(
                             _usernameController.text, _passwordController.text);
                         print(_jwt);
                         if (_jwt != null) {
                           final prefs = await SharedPreferences.getInstance();
                           await prefs.setString("jwt", _jwt);
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MyDashboard()));
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MyDashboard()),
+                            (route) => false,
+                          );
                         } else {
                           var _err = await errorLogIn(_usernameController.text,
                               _passwordController.text);
-                          displayDialog(context, "An Error Occurred", "$_err");
+
+                          /*Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AlertDialog(
+                                  title: Text("Something went wrong!"),
+                                  content: Text(_err)),
+                            ),
+                          );*/
+                          Navigator.pop(context);
+                          displayDialog(
+                              context, "Something went wrong!", "$_err");
                         }
                       },
                     ),
