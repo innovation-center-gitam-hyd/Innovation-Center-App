@@ -96,7 +96,7 @@ class _MyProfileState extends State<MyProfile> {
             ),
             _data != null
                 ? Card(
-                    elevation: 7,
+                    elevation: 5,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     margin: EdgeInsets.all(20),

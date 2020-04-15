@@ -34,13 +34,15 @@ class _AdminModeState extends State<AdminMode> {
               child: Card(
                 elevation: 5,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Icon(
                       Icons.shopping_cart,
                       size: 30,
                     ),
                     ListTile(
-                      title: Text("Lend Inventory Item"),
+                      title: Text("Lend \nInventory Item",textAlign: TextAlign.center,),
                     ),
                   ],
                 ),
@@ -53,6 +55,7 @@ class _AdminModeState extends State<AdminMode> {
               child: Card(
                 elevation: 5,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Icon(
@@ -60,7 +63,7 @@ class _AdminModeState extends State<AdminMode> {
                       size: 30,
                     ),
                     ListTile(
-                      title: Text("Return Inventory Item"),
+                      title: Text("Return \nInventory Item",textAlign: TextAlign.center,),
                     ),
                   ],
                 ),
@@ -73,6 +76,7 @@ class _AdminModeState extends State<AdminMode> {
               child: Card(
                 elevation: 5,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Icon(
@@ -80,7 +84,7 @@ class _AdminModeState extends State<AdminMode> {
                       size: 30,
                     ),
                     ListTile(
-                      title: Text("Add Inventory"),
+                      title: Text("Add Inventory",textAlign: TextAlign.center,),
                     ),
                   ],
                 ),
@@ -93,6 +97,7 @@ class _AdminModeState extends State<AdminMode> {
               child: Card(
                 elevation: 5,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Icon(
@@ -100,7 +105,7 @@ class _AdminModeState extends State<AdminMode> {
                       size: 30,
                     ),
                     ListTile(
-                      title: Text("Update Inventory"),
+                      title: Text("Update Inventory",textAlign: TextAlign.center,),
                     ),
                   ],
                 ),

@@ -190,6 +190,7 @@ class _MyDashboardState extends State<MyDashboard> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Card(
+                  elevation: 5,
                   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   child: ListTile(
                     leading: Icon(Icons.format_list_bulleted),
@@ -210,9 +211,10 @@ class _MyDashboardState extends State<MyDashboard> {
                       ),
                     ),
                   ),
-                  color: Color(0xFFF5F5F5),
+                  //color: Color(0xFFF5F5F5),
                 ),
                 Card(
+                  elevation: 5,
                   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   child: ListTile(
                     leading: Icon(Icons.assignment),
@@ -233,10 +235,11 @@ class _MyDashboardState extends State<MyDashboard> {
                       ),
                     ),
                   ),
-                  color: Color(0xFFF5F5F5),
+                  //color: Color(0xFFF5F5F5),
                 ),
                 _isAdmin
                     ? Card(
+                      elevation: 5,
                         margin:
                             EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                         child: ListTile(
@@ -258,7 +261,7 @@ class _MyDashboardState extends State<MyDashboard> {
                             ),
                           ),
                         ),
-                        color: Color(0xFFF5F5F5),
+                        //color: Color(0xFFF5F5F5),
                       )
                     : Container(),
               ],
