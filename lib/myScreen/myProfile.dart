@@ -157,7 +157,7 @@ class _MyProfileState extends State<MyProfile> {
         child: ListView(
           children: [
             DrawerHeader(
-              child: Center(child: Text("Settings")),
+              child: Center(child: Text("Settings",style: TextStyle(fontSize: 22,fontWeight: FontWeight.w600,color: Colors.white),)),
               decoration: BoxDecoration(color: Colors.grey),
             ),
             ListTile(

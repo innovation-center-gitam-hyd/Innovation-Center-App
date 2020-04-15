@@ -21,7 +21,94 @@ class _AdminModeState extends State<AdminMode> {
         backgroundColor: Colors.black,
         centerTitle: true,
       ),
-      body: Container(),
+      body: GridView.count(
+        primary: false,
+        padding: const EdgeInsets.all(20),
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        crossAxisCount: 2,
+        children: [
+          Container(
+            child: GestureDetector(
+              onTap: () => print("Lend Inventory Item"),
+              child: Card(
+                elevation: 5,
+                child: Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.shopping_cart,
+                      size: 30,
+                    ),
+                    ListTile(
+                      title: Text("Lend Inventory Item"),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Container(
+            child: GestureDetector(
+              onTap: () => print("Return Inventory Item"),
+              child: Card(
+                elevation: 5,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.rotate_90_degrees_ccw,
+                      size: 30,
+                    ),
+                    ListTile(
+                      title: Text("Return Inventory Item"),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Container(
+            child: GestureDetector(
+              onTap: () => print("Add Inventory"),
+              child: Card(
+                elevation: 5,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.playlist_add,
+                      size: 30,
+                    ),
+                    ListTile(
+                      title: Text("Add Inventory"),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Container(
+            child: GestureDetector(
+              onTap: () => print("Update Inventory"),
+              child: Card(
+                elevation: 5,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.update,
+                      size: 30,
+                    ),
+                    ListTile(
+                      title: Text("Update Inventory"),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
