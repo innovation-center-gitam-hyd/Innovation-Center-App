@@ -67,7 +67,7 @@ class _LoginState extends State<Login> {
                 children: <Widget>[
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.black,
+                      color: Color(0xFF4EAEFF),
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(40),
                           bottomRight: Radius.circular(40)),
@@ -77,6 +77,9 @@ class _LoginState extends State<Login> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
+                          Spacer(
+                            flex: 2,
+                          ),
                           SizedBox(
                             height: MediaQuery.of(context).size.height / 4,
                             width: MediaQuery.of(context).size.height / 4,
@@ -91,11 +94,16 @@ class _LoginState extends State<Login> {
                                   color: Colors.white,
                                   fontFamily: 'TimesNewRoman',
                                   fontSize: 23,
+                                  fontWeight: FontWeight.w600,
+                                  letterSpacing: 1,
                                 ),
                                 textAlign: TextAlign.center,
                               ),
                             ),
-                          )
+                          ),
+                          Spacer(
+                            flex: 1,
+                          ),
                         ],
                       ),
                     ),
@@ -174,7 +182,8 @@ class _LoginState extends State<Login> {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 50),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
                     child: RaisedButton(
                       padding: EdgeInsets.symmetric(horizontal: 50),
                       shape: RoundedRectangleBorder(
@@ -184,7 +193,7 @@ class _LoginState extends State<Login> {
                         "LOGIN",
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
-                      color: Colors.black,
+                      color: Color(0xFF4EAEFF),
                       elevation: 7,
                       onPressed: () async {
                         loginDialog(context);
@@ -194,8 +203,9 @@ class _LoginState extends State<Login> {
                         print("jwt :$_jwt");
                         if (_jwt != null) {
                           final prefs = await SharedPreferences.getInstance();
-                          var _jwtInfo=_jwt.toString().split(".");
-                          print(json.decode(ascii.decode(base64.decode(base64.normalize(_jwtInfo[1])))));
+                          var _jwtInfo = _jwt.toString().split(".");
+                          print(json.decode(ascii.decode(
+                              base64.decode(base64.normalize(_jwtInfo[1])))));
                           await prefs.setString("jwt", _jwt);
                           Navigator.pushAndRemoveUntil(
                             context,

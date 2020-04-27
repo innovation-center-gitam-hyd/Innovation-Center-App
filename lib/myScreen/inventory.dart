@@ -1,62 +1,300 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
-class MyInventory extends StatefulWidget {
-  @override
-  _MyInventoryState createState() => _MyInventoryState();
-}
-
-class _MyInventoryState extends State<MyInventory> {
+class MyInventory extends StatelessWidget {
+  final bool _isAdmin;
+  MyInventory(this._isAdmin);
   @override
   Widget build(BuildContext context) {
+    print(_isAdmin);
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Innovation Center",
-          style: TextStyle(fontFamily: 'TimesNewRoman', fontSize: 25),
-        ),
-        //backgroundColor: Colors.black,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          onPressed: () => Navigator.pop(context),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.black,
-      ),
-      body: Column(
+      body: Stack(
         children: [
-          _MyInventoryCard(),
-          _MyInventoryCard(),
+          Column(
+            children: [
+              Container(
+                height: (MediaQuery.of(context).size.height / 7.8),
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  //mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Card(
+                      elevation: 5,
+                      margin: EdgeInsets.all(10),
+                      child: ListTile(
+                        leading: Icon(Icons.format_list_bulleted),
+                        title: Text(
+                          "Inventory List",
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        trailing: Icon(Icons.arrow_forward_ios),
+                        onTap: () => Navigator.push(
+                          context,
+                          PageTransition(
+                            child: MyInventoryList(),
+                            type: PageTransitionType.rightToLeft,
+                            duration: Duration(milliseconds: 150),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      thickness: 1,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(0),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              top: 8,
+                            ),
+                            child: Text(
+                              "Your Items",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  child: Row(
+                                    children: [
+                                      CircleAvatar(
+                                        backgroundColor: Colors.redAccent,
+                                        radius:
+                                            MediaQuery.of(context).size.height /
+                                                100,
+                                      ),
+                                      Text("\tNot Returned")
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  child: Row(
+                                    children: [
+                                      CircleAvatar(
+                                        backgroundColor: Colors.greenAccent,
+                                        radius:
+                                            MediaQuery.of(context).size.height /
+                                                100,
+                                      ),
+                                      Text("\tReturned")
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  child: Row(
+                                    children: [
+                                      CircleAvatar(
+                                        backgroundColor: Colors.orangeAccent,
+                                        radius:
+                                            MediaQuery.of(context).size.height /
+                                                100,
+                                      ),
+                                      Text("\tConsumed")
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.yellowAccent,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: Text("Item Name"),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 10),
+                                child: Text("Qty."),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              //My Items
+                              Container(
+                                color: Colors.redAccent,
+                                height: 20,
+                              ),
+                              Container(
+                                color: Colors.greenAccent,
+                                height: 20,
+                              ),
+                              Container(
+                                color: Colors.orangeAccent,
+                                height: 20,
+                              ),
+                              Container(
+                                color: Colors.redAccent,
+                                height: 20,
+                              ),
+                              Container(
+                                color: Colors.greenAccent,
+                                height: 20,
+                              ),
+                              Container(
+                                color: Colors.orangeAccent,
+                                height: 20,
+                              ),
+                              Container(
+                                color: Colors.redAccent,
+                                height: 20,
+                              ),
+                              Container(
+                                color: Colors.greenAccent,
+                                height: 20,
+                              ),
+                              Container(
+                                color: Colors.orangeAccent,
+                                height: 20,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+          Container(
+            height: (MediaQuery.of(context).size.height / 7.8),
+            decoration: BoxDecoration(
+              color: Color(0xFF4EAEFF),
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15)),
+            ),
+            child: SafeArea(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.white,
+                      //size: 30,
+                    ),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                  Text(
+                    "Inventory",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 }
 
-class _MyInventoryCard extends StatelessWidget {
+class MyInventoryList extends StatefulWidget {
+  @override
+  _MyInventoryListState createState() => _MyInventoryListState();
+}
+
+class _MyInventoryListState extends State<MyInventoryList> {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
-      child: Padding(
-        padding: const EdgeInsets.all(2),
-        child: ListTile(
-          title: Text(
-            "Item Name",
-            style: TextStyle(fontSize: 20),
+    return Scaffold(
+      body: Stack(
+        children: [
+          ListView(),
+          Container(
+            height: (MediaQuery.of(context).size.height / 5.8),
+            decoration: BoxDecoration(
+              color: Colors.indigoAccent,
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15)),
+            ),
+            child: SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Spacer(
+                    flex: 1,
+                  ),
+                  Text(
+                    "200 Items found",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Padding(
+                      padding: EdgeInsets.all(
+                          (MediaQuery.of(context).size.height / 200)))
+                ],
+              ),
+            ),
           ),
-          subtitle: Text("Unique Id\nCode Id"),
-          isThreeLine: true,
-          /*trailing: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("1",style: TextStyle(fontSize: 18),),
-            ],
-          ),*/
-          trailing: Text(
-            "1",
-            style: TextStyle(fontSize: 18),
+          Container(
+            height: (MediaQuery.of(context).size.height / 7.8),
+            decoration: BoxDecoration(
+              color: Color(0xFF4EAEFF),
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15)),
+            ),
+            child: SafeArea(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.white,
+                    ),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                  Text(
+                    "Inventory List",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22,
+                    ),
+                  )
+                ],
+              ),
+            ),
           ),
-        ),
+          //Text("data")
+        ],
       ),
     );
   }

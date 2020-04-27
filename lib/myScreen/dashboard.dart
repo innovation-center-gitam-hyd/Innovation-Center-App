@@ -25,7 +25,7 @@ class _MyDashboardState extends State<MyDashboard> {
       _data = prefs.getString('jwt').toString().split(".");
       print(json.decode(ascii.decode(base64.decode(base64.normalize(_data[1]))))['member']);
       _mem = int.parse(json.decode(ascii.decode(base64.decode(base64.normalize(_data[1]))))['member']);
-      _isAdmin = _mem == 1 ? true : false;
+      _isAdmin = _mem == 2 ? true : false;
     });
   }
 
@@ -47,7 +47,7 @@ class _MyDashboardState extends State<MyDashboard> {
                 clipper: WaveClipperTwo(),
                 child: Container(
                   height: (MediaQuery.of(context).size.height / 4.5),
-                  color: Colors.black,
+                  color: Color(0xFF4EAEFF),
                   child: SafeArea(
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -138,8 +138,8 @@ class _MyDashboardState extends State<MyDashboard> {
                                       context,
                                       PageTransition(
                                         child: MyProfile(),
-                                        type: PageTransitionType.scale,
-                                        alignment: Alignment.topRight,
+                                        type: PageTransitionType.fade,
+                                        //alignment: Alignment.topRight,
                                       ),
                                     ),
                                     child: Stack(
@@ -149,12 +149,12 @@ class _MyDashboardState extends State<MyDashboard> {
                                                   .size
                                                   .height /
                                               30,
-                                          backgroundColor: Colors.grey,
+                                          backgroundColor: Colors.white,
                                           child: CircularProgressIndicator(
                                             backgroundColor: Colors.transparent,
                                             valueColor:
                                                 AlwaysStoppedAnimation<Color>(
-                                                    Colors.white),
+                                                    Colors.grey),
                                           ),
                                         ),
                                         CircleAvatar(
@@ -207,7 +207,7 @@ class _MyDashboardState extends State<MyDashboard> {
                       PageTransition(
                         type: PageTransitionType.rightToLeft,
                         duration: Duration(milliseconds: 150),
-                        child: MyInventory(),
+                        child: MyInventory(_isAdmin),
                       ),
                     ),
                   ),
