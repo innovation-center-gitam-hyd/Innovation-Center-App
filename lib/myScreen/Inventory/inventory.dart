@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ic_inventory/myScreen/inventoryAdmin.dart';
+import 'package:ic_inventory/myScreen/Inventory/inventoryAdmin.dart';
 import 'package:page_transition/page_transition.dart';
 
 class MyInventory extends StatelessWidget {
