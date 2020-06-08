@@ -40,13 +40,13 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/images/
+   - images/
   #  - images/a_dot_ham.jpeg
 
   fonts:
     - family: TimesNewRoman
       fonts:
-        - asset: assets/font/times-new-roman.ttf
+        - asset: fonts/times-new-roman.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
