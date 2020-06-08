@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:ic_inventory/myScreen/inventory.dart';
-import 'package:ic_inventory/myScreen/inventoryAdmin.dart';
-import 'package:ic_inventory/myScreen/myItems.dart';
 import 'package:ic_inventory/myScreen/myProfile.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -164,7 +162,7 @@ class _MyDashboardState extends State<MyDashboard> {
                                               30,
                                           backgroundColor: Colors.transparent,
                                           backgroundImage: NetworkImage(
-                                            "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/40e2d62dd7cbffcce6f070c3ae1098a1c645be97785c37d43b1d97aa04b0ed2f._RI_V_TTW_.jpg",
+                                            "https://upload.wikimedia.org/wikipedia/en/a/a6/Gandhi_Institute_of_Technology_and_Management_logo.jpg",
                                           ),
                                         ),
                                       ],
@@ -213,57 +211,31 @@ class _MyDashboardState extends State<MyDashboard> {
                   ),
                   //color: Color(0xFFF5F5F5),
                 ),
-                Card(
-                  elevation: 5,
-                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  child: ListTile(
-                    leading: Icon(Icons.assignment),
-                    title: Text(
-                      "My Items",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    trailing: Icon(Icons.arrow_forward_ios),
-                    onTap: () => Navigator.push(
-                      context,
-                      PageTransition(
-                        type: PageTransitionType.rightToLeft,
-                        duration: Duration(milliseconds: 150),
-                        child: MyItems(),
-                      ),
-                    ),
-                  ),
-                  //color: Color(0xFFF5F5F5),
-                ),
-                _isAdmin
-                    ? Card(
-                      elevation: 5,
-                        margin:
-                            EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                        child: ListTile(
-                          leading: Icon(Icons.category),
-                          title: Text(
-                            "Inventory Admin",
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          trailing: Icon(Icons.arrow_forward_ios),
-                          onTap: () => Navigator.push(
-                            context,
-                            PageTransition(
-                              type: PageTransitionType.rightToLeft,
-                              duration: Duration(milliseconds: 150),
-                              child: AdminMode(),
-                            ),
-                          ),
-                        ),
-                        //color: Color(0xFFF5F5F5),
-                      )
-                    : Container(),
+                // Card(
+                //   elevation: 5,
+                //   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                //   child: ListTile(
+                //     leading: Icon(Icons.assignment),
+                //     title: Text(
+                //       "My Items",
+                //       style: TextStyle(
+                //         fontSize: 20,
+                //         fontWeight: FontWeight.w500,
+                //       ),
+                //     ),
+                //     trailing: Icon(Icons.arrow_forward_ios),
+                //     onTap: () => Navigator.push(
+                //       context,
+                //       PageTransition(
+                //         type: PageTransitionType.rightToLeft,
+                //         duration: Duration(milliseconds: 150),
+                //         child: MyItems(),
+                //       ),
+                //     ),
+                //   ),
+                //   //color: Color(0xFFF5F5F5),
+                // ),
+                
               ],
             ),
           )

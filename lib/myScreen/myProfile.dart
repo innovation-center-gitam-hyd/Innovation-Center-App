@@ -87,7 +87,7 @@ class _MyProfileState extends State<MyProfile> {
                         radius: MediaQuery.of(context).size.height / 10,
                         backgroundColor: Colors.transparent,
                         backgroundImage: NetworkImage(
-                            "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/40e2d62dd7cbffcce6f070c3ae1098a1c645be97785c37d43b1d97aa04b0ed2f._RI_V_TTW_.jpg"),
+                            "https://upload.wikimedia.org/wikipedia/en/a/a6/Gandhi_Institute_of_Technology_and_Management_logo.jpg"),
                       ),
                     ),
                   ],

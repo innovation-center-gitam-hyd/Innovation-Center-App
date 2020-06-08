@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ic_inventory/myScreen/inventoryAdmin.dart';
 import 'package:page_transition/page_transition.dart';
 
 class MyInventory extends StatelessWidget {
@@ -28,7 +29,7 @@ class MyInventory extends StatelessWidget {
                         title: Text(
                           "Inventory List",
                           style: TextStyle(
-                            fontSize: 25,
+                            fontSize: 20,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -43,144 +44,194 @@ class MyInventory extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Divider(
-                      thickness: 1,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(0),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              top: 8,
-                            ),
-                            child: Text(
-                              "Your Items",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.w500),
-                            ),
+
+                    Card(
+                      elevation: 5,
+                      margin: EdgeInsets.all(10),
+                      child: ListTile(
+                        leading: Icon(Icons.assignment),
+                        title: Text(
+                          "My Items",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Container(
-                                  child: Row(
-                                    children: [
-                                      CircleAvatar(
-                                        backgroundColor: Colors.redAccent,
-                                        radius:
-                                            MediaQuery.of(context).size.height /
-                                                100,
-                                      ),
-                                      Text("\tNot Returned")
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  child: Row(
-                                    children: [
-                                      CircleAvatar(
-                                        backgroundColor: Colors.greenAccent,
-                                        radius:
-                                            MediaQuery.of(context).size.height /
-                                                100,
-                                      ),
-                                      Text("\tReturned")
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  child: Row(
-                                    children: [
-                                      CircleAvatar(
-                                        backgroundColor: Colors.orangeAccent,
-                                        radius:
-                                            MediaQuery.of(context).size.height /
-                                                100,
-                                      ),
-                                      Text("\tConsumed")
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.yellowAccent,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 10),
-                                child: Text("Item Name"),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 10),
-                                child: Text("Qty."),
-                              ),
-                            ],
+                        ),
+                        trailing: Icon(Icons.arrow_forward_ios),
+                        onTap: () => Navigator.push(
+                          context,
+                          PageTransition(
+                            child: MyInventoryList(),
+                            type: PageTransitionType.rightToLeft,
+                            duration: Duration(milliseconds: 150),
                           ),
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            children: [
-                              //My Items
-                              Container(
-                                color: Colors.redAccent,
-                                height: 20,
+
+                    _isAdmin
+                        ? Card(
+                            elevation: 5,
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 5),
+                            child: ListTile(
+                              leading: Icon(Icons.category),
+                              title: Text(
+                                "Inventory Admin",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
-                              Container(
-                                color: Colors.greenAccent,
-                                height: 20,
+                              trailing: Icon(Icons.arrow_forward_ios),
+                              onTap: () => Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.rightToLeft,
+                                  duration: Duration(milliseconds: 150),
+                                  child: AdminMode(),
+                                ),
                               ),
-                              Container(
-                                color: Colors.orangeAccent,
-                                height: 20,
-                              ),
-                              Container(
-                                color: Colors.redAccent,
-                                height: 20,
-                              ),
-                              Container(
-                                color: Colors.greenAccent,
-                                height: 20,
-                              ),
-                              Container(
-                                color: Colors.orangeAccent,
-                                height: 20,
-                              ),
-                              Container(
-                                color: Colors.redAccent,
-                                height: 20,
-                              ),
-                              Container(
-                                color: Colors.greenAccent,
-                                height: 20,
-                              ),
-                              Container(
-                                color: Colors.orangeAccent,
-                                height: 20,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    )
+                            ),
+                            //color: Color(0xFFF5F5F5),
+                          )
+                        : Container(),
+
+                    // Padding(
+                    //   padding: EdgeInsets.all(0),
+                    //   child: Column(
+                    //     children: [
+                    //       Padding(
+                    //         padding: const EdgeInsets.only(
+                    //           top: 8,
+                    //         ),
+                    //         child: Text(
+                    //           "Your Items",
+                    //           style: TextStyle(
+                    //               fontSize: 20, fontWeight: FontWeight.w500),
+                    //         ),
+                    //       ),
+                    //       Padding(
+                    //         padding: const EdgeInsets.all(8.0),
+                    //         child: Row(
+                    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    //           children: [
+                    //             Container(
+                    //               child: Row(
+                    //                 children: [
+                    //                   CircleAvatar(
+                    //                     backgroundColor: Colors.redAccent,
+                    //                     radius:
+                    //                         MediaQuery.of(context).size.height /
+                    //                             100,
+                    //                   ),
+                    //                   Text("\tNot Returned")
+                    //                 ],
+                    //               ),
+                    //             ),
+                    //             Container(
+                    //               child: Row(
+                    //                 children: [
+                    //                   CircleAvatar(
+                    //                     backgroundColor: Colors.greenAccent,
+                    //                     radius:
+                    //                         MediaQuery.of(context).size.height /
+                    //                             100,
+                    //                   ),
+                    //                   Text("\tReturned")
+                    //                 ],
+                    //               ),
+                    //             ),
+                    //             Container(
+                    //               child: Row(
+                    //                 children: [
+                    //                   CircleAvatar(
+                    //                     backgroundColor: Colors.orangeAccent,
+                    //                     radius:
+                    //                         MediaQuery.of(context).size.height /
+                    //                             100,
+                    //                   ),
+                    //                   Text("\tConsumed")
+                    //                 ],
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 8),
+                    //   child: Expanded(
+                    //     child: Container(
+                    //       decoration: BoxDecoration(
+                    //         color: Colors.yellowAccent,
+                    //       ),
+                    //       child: Row(
+                    //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //         children: [
+                    //           Padding(
+                    //             padding: const EdgeInsets.only(left: 10),
+                    //             child: Text("Item Name"),
+                    //           ),
+                    //           Padding(
+                    //             padding: const EdgeInsets.only(right: 10),
+                    //             child: Text("Qty."),
+                    //           ),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    // Expanded(
+                    //   child: Padding(
+                    //     padding: const EdgeInsets.all(8.0),
+                    //     child: SingleChildScrollView(
+                    //       child: Column(
+                    //         children: [
+                    //           //My Items
+                    //           Container(
+                    //             color: Colors.redAccent,
+                    //             height: 20,
+                    //           ),
+                    //           Container(
+                    //             color: Colors.greenAccent,
+                    //             height: 20,
+                    //           ),
+                    //           Container(
+                    //             color: Colors.orangeAccent,
+                    //             height: 20,
+                    //           ),
+                    //           Container(
+                    //             color: Colors.redAccent,
+                    //             height: 20,
+                    //           ),
+                    //           Container(
+                    //             color: Colors.greenAccent,
+                    //             height: 20,
+                    //           ),
+                    //           Container(
+                    //             color: Colors.orangeAccent,
+                    //             height: 20,
+                    //           ),
+                    //           Container(
+                    //             color: Colors.redAccent,
+                    //             height: 20,
+                    //           ),
+                    //           Container(
+                    //             color: Colors.greenAccent,
+                    //             height: 20,
+                    //           ),
+                    //           Container(
+                    //             color: Colors.orangeAccent,
+                    //             height: 20,
+                    //           ),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ),
+                    // )
                   ],
                 ),
               )
