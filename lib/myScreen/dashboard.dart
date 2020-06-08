@@ -206,7 +206,7 @@ class _MyDashboardState extends State<MyDashboard> {
                       PageTransition(
                         type: PageTransitionType.rightToLeft,
                         duration: Duration(milliseconds: 150),
-                        child: MyInventory(_isAdmin),
+                        child: MyInventory(isAdmin: _isAdmin,),
                       ),
                     ),
                   ),
@@ -230,11 +230,10 @@ class _MyDashboardState extends State<MyDashboard> {
                       PageTransition(
                         type: PageTransitionType.rightToLeft,
                         duration: Duration(milliseconds: 150),
-                        child: MyInventory(_isAdmin),
+                        child: MyInventory(isAdmin: _isAdmin,),
                       ),
                     ),
                   ),
-                  //color: Color(0xFFF5F5F5),
                 ),
               ],
             ),

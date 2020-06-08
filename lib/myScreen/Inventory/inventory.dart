@@ -4,11 +4,12 @@ import 'package:ic_inventory/myScreen/myWidgets/myScaffold.dart';
 import 'package:page_transition/page_transition.dart';
 
 class MyInventory extends StatelessWidget {
-  final bool _isAdmin;
-  MyInventory(this._isAdmin);
+  final bool isAdmin;
+  //MyInventory(this._isAdmin);
+  MyInventory({@required this.isAdmin});
   @override
   Widget build(BuildContext context) {
-    print(_isAdmin);
+    print(isAdmin);
     return Scaffold(
       body: Stack(
         children: [
@@ -70,7 +71,7 @@ class MyInventory extends StatelessWidget {
                       ),
                     ),
 
-                    _isAdmin
+                    isAdmin
                         ? Card(
                             elevation: 5,
                             margin: EdgeInsets.symmetric(
