@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ic_inventory/myScreen/myWidgets/myScaffold.dart';
 
 class AdminMode extends StatefulWidget {
   @override
@@ -8,20 +9,9 @@ class AdminMode extends StatefulWidget {
 class _AdminModeState extends State<AdminMode> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          "Innovation Center",
-          style: TextStyle(fontFamily: 'TimesNewRoman', fontSize: 25),
-        ),
-        backgroundColor: Colors.black,
-        centerTitle: true,
-      ),
-      body: GridView.count(
+    return MyScaffold(
+      title: "Inventory Admin",
+      myBody: GridView.count(
         primary: false,
         padding: const EdgeInsets.all(20),
         crossAxisSpacing: 10,
@@ -42,7 +32,10 @@ class _AdminModeState extends State<AdminMode> {
                       size: 30,
                     ),
                     ListTile(
-                      title: Text("Lend \nInventory Item",textAlign: TextAlign.center,),
+                      title: Text(
+                        "Lend \nInventory Item",
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ],
                 ),
@@ -63,7 +56,10 @@ class _AdminModeState extends State<AdminMode> {
                       size: 30,
                     ),
                     ListTile(
-                      title: Text("Return \nInventory Item",textAlign: TextAlign.center,),
+                      title: Text(
+                        "Return \nInventory Item",
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ],
                 ),
@@ -84,7 +80,10 @@ class _AdminModeState extends State<AdminMode> {
                       size: 30,
                     ),
                     ListTile(
-                      title: Text("Add Inventory",textAlign: TextAlign.center,),
+                      title: Text(
+                        "Add Inventory",
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ],
                 ),
@@ -105,7 +104,10 @@ class _AdminModeState extends State<AdminMode> {
                       size: 30,
                     ),
                     ListTile(
-                      title: Text("Update Inventory",textAlign: TextAlign.center,),
+                      title: Text(
+                        "Update Inventory",
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ],
                 ),
