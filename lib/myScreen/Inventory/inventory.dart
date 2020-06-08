@@ -61,7 +61,7 @@ class MyInventory extends StatelessWidget {
                         onTap: () => Navigator.push(
                           context,
                           PageTransition(
-                            child: MyInventoryList(),
+                            child: MyInventoryItems(),
                             type: PageTransitionType.rightToLeft,
                             duration: Duration(milliseconds: 150),
                           ),
@@ -345,6 +345,56 @@ class _MyInventoryListState extends State<MyInventoryList> {
             ),
           ),
           //Text("data")
+        ],
+      ),
+    );
+  }
+}
+
+class MyInventoryItems extends StatefulWidget {
+  @override
+  _MyInventoryItemsState createState() => _MyInventoryItemsState();
+}
+
+class _MyInventoryItemsState extends State<MyInventoryItems> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          Container(
+            height: (MediaQuery.of(context).size.height / 7.8),
+            decoration: BoxDecoration(
+              color: Color(0xFF4EAEFF),
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15)),
+            ),
+            child: SafeArea(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.white,
+                      //size: 30,
+                    ),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                  Text(
+                    "Inventory",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          //Items
         ],
       ),
     );
