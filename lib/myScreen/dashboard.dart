@@ -21,8 +21,10 @@ class _MyDashboardState extends State<MyDashboard> {
     var _mem, _data;
     setState(() {
       _data = prefs.getString('jwt').toString().split(".");
-      print(json.decode(ascii.decode(base64.decode(base64.normalize(_data[1]))))['member']);
-      _mem = int.parse(json.decode(ascii.decode(base64.decode(base64.normalize(_data[1]))))['member']);
+      print(json.decode(
+          ascii.decode(base64.decode(base64.normalize(_data[1]))))['member']);
+      _mem = int.parse(json.decode(
+          ascii.decode(base64.decode(base64.normalize(_data[1]))))['member']);
       _isAdmin = _mem == 2 ? true : false;
     });
   }
@@ -193,6 +195,30 @@ class _MyDashboardState extends State<MyDashboard> {
                   child: ListTile(
                     leading: Icon(Icons.format_list_bulleted),
                     title: Text(
+                      "New Project",
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    trailing: Icon(Icons.arrow_forward_ios),
+                    onTap: () => Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.rightToLeft,
+                        duration: Duration(milliseconds: 150),
+                        child: MyInventory(_isAdmin),
+                      ),
+                    ),
+                  ),
+                  //color: Color(0xFFF5F5F5),
+                ),
+                Card(
+                  elevation: 5,
+                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  child: ListTile(
+                    leading: Icon(Icons.format_list_bulleted),
+                    title: Text(
                       "Inventory",
                       style: TextStyle(
                         fontSize: 22,
@@ -235,7 +261,6 @@ class _MyDashboardState extends State<MyDashboard> {
                 //   ),
                 //   //color: Color(0xFFF5F5F5),
                 // ),
-                
               ],
             ),
           )
