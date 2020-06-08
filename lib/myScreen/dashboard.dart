@@ -236,30 +236,6 @@ class _MyDashboardState extends State<MyDashboard> {
                   ),
                   //color: Color(0xFFF5F5F5),
                 ),
-                // Card(
-                //   elevation: 5,
-                //   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                //   child: ListTile(
-                //     leading: Icon(Icons.assignment),
-                //     title: Text(
-                //       "My Items",
-                //       style: TextStyle(
-                //         fontSize: 20,
-                //         fontWeight: FontWeight.w500,
-                //       ),
-                //     ),
-                //     trailing: Icon(Icons.arrow_forward_ios),
-                //     onTap: () => Navigator.push(
-                //       context,
-                //       PageTransition(
-                //         type: PageTransitionType.rightToLeft,
-                //         duration: Duration(milliseconds: 150),
-                //         child: MyItems(),
-                //       ),
-                //     ),
-                //   ),
-                //   //color: Color(0xFFF5F5F5),
-                // ),
               ],
             ),
           )
