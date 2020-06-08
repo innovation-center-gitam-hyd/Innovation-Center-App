@@ -83,7 +83,7 @@ class _LoginState extends State<Login> {
                           SizedBox(
                             height: MediaQuery.of(context).size.height / 4,
                             width: MediaQuery.of(context).size.height / 4,
-                            child: Image.asset('assets/images/IC_Logo.png'),
+                            child: Image.asset('images/IC_Logo.png'),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 15),
