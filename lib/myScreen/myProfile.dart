@@ -37,14 +37,14 @@ class _MyProfileState extends State<MyProfile> {
       key: _scaffoldKey,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: Icon(Icons.close),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
           "Innovation Center",
-          style: TextStyle(fontFamily: 'TimesNewRoman', fontSize: 25),
+          style: TextStyle(fontFamily: 'TimesNewRoman', fontSize: 26),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xFF4EAEFF),
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.settings),
@@ -62,7 +62,7 @@ class _MyProfileState extends State<MyProfile> {
                   clipper: OvalBottomBorderClipper(),
                   child: Container(
                     height: MediaQuery.of(context).size.height / 5,
-                    color: Colors.black,
+                    color: Color(0xFF4EAEFF),
                   ),
                 ),
                 Stack(
