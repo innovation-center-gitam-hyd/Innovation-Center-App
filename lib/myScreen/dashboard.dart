@@ -80,8 +80,7 @@ class _MyDashboardState extends State<MyDashboard> {
                                       height:
                                           MediaQuery.of(context).size.height /
                                               8,
-                                      child: Image.asset(
-                                          'assets/images/IC_Logo.png'),
+                                      child: Image.asset('images/IC_Logo.png'),
                                     ),
                                   ),
                                 ),
@@ -100,7 +99,7 @@ class _MyDashboardState extends State<MyDashboard> {
                                   "Innovation",
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 25,
+                                    fontSize: 26,
                                     fontFamily: 'TimesNewRoman',
                                   ),
                                 ),
@@ -108,7 +107,7 @@ class _MyDashboardState extends State<MyDashboard> {
                                   "Center",
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 25,
+                                    fontSize: 26,
                                     fontFamily: 'TimesNewRoman',
                                   ),
                                 ),
