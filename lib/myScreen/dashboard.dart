@@ -192,7 +192,7 @@ class _MyDashboardState extends State<MyDashboard> {
                   elevation: 5,
                   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   child: ListTile(
-                    leading: Icon(Icons.format_list_bulleted),
+                    leading: Icon(Icons.assistant_photo),
                     title: Text(
                       "New Project",
                       style: TextStyle(
