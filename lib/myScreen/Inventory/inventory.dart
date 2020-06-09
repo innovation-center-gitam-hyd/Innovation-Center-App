@@ -98,55 +98,6 @@ class MyInventory extends StatelessWidget {
                             //color: Color(0xFFF5F5F5),
                           )
                         : Container(),
-
-                    // Expanded(
-                    //   child: Padding(
-                    //     padding: const EdgeInsets.all(8.0),
-                    //     child: SingleChildScrollView(
-                    //       child: Column(
-                    //         children: [
-                    //           //My Items
-                    //           Container(
-                    //             color: Colors.redAccent,
-                    //             height: 20,
-                    //           ),
-                    //           Container(
-                    //             color: Colors.greenAccent,
-                    //             height: 20,
-                    //           ),
-                    //           Container(
-                    //             color: Colors.orangeAccent,
-                    //             height: 20,
-                    //           ),
-                    //           Container(
-                    //             color: Colors.redAccent,
-                    //             height: 20,
-                    //           ),
-                    //           Container(
-                    //             color: Colors.greenAccent,
-                    //             height: 20,
-                    //           ),
-                    //           Container(
-                    //             color: Colors.orangeAccent,
-                    //             height: 20,
-                    //           ),
-                    //           Container(
-                    //             color: Colors.redAccent,
-                    //             height: 20,
-                    //           ),
-                    //           Container(
-                    //             color: Colors.greenAccent,
-                    //             height: 20,
-                    //           ),
-                    //           Container(
-                    //             color: Colors.orangeAccent,
-                    //             height: 20,
-                    //           ),
-                    //         ],
-                    //       ),
-                    //     ),
-                    //   ),
-                    // )
                   ],
                 ),
               )
