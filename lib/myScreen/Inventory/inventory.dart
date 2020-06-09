@@ -284,71 +284,10 @@ class MyInventoryList extends StatefulWidget {
 class _MyInventoryListState extends State<MyInventoryList> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          ListView(),
-          Container(
-            height: (MediaQuery.of(context).size.height / 5.8),
-            decoration: BoxDecoration(
-              color: Colors.indigoAccent,
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(15),
-                  bottomRight: Radius.circular(15)),
-            ),
-            child: SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Spacer(
-                    flex: 1,
-                  ),
-                  Text(
-                    "200 Items found",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  Padding(
-                      padding: EdgeInsets.all(
-                          (MediaQuery.of(context).size.height / 200)))
-                ],
-              ),
-            ),
-          ),
-          Container(
-            height: (MediaQuery.of(context).size.height / 7.8),
-            decoration: BoxDecoration(
-              color: Color(0xFF4EAEFF),
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(15),
-                  bottomRight: Radius.circular(15)),
-            ),
-            child: SafeArea(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.white,
-                    ),
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                  Text(
-                    "Inventory List",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-          //Text("data")
-        ],
-      ),
+    return MyListItemsScaffold(
+      title: "Inventory List",
+      items: "200",
+      myBody: Container(),
     );
   }
 }
