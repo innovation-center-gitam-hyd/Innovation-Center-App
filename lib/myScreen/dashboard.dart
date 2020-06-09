@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:ic_inventory/myScreen/Inventory/inventory.dart';
+import 'package:ic_inventory/myScreen/Project/project.dart';
 import 'package:ic_inventory/myScreen/myProfile.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -206,7 +207,7 @@ class _MyDashboardState extends State<MyDashboard> {
                       PageTransition(
                         type: PageTransitionType.rightToLeft,
                         duration: Duration(milliseconds: 150),
-                        child: MyInventory(isAdmin: _isAdmin,),
+                        child: MyProject(),
                       ),
                     ),
                   ),
