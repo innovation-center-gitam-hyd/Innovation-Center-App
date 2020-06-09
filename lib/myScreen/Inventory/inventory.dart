@@ -99,93 +99,6 @@ class MyInventory extends StatelessWidget {
                           )
                         : Container(),
 
-                    // Padding(
-                    //   padding: EdgeInsets.all(0),
-                    //   child: Column(
-                    //     children: [
-                    //       Padding(
-                    //         padding: const EdgeInsets.only(
-                    //           top: 8,
-                    //         ),
-                    //         child: Text(
-                    //           "Your Items",
-                    //           style: TextStyle(
-                    //               fontSize: 20, fontWeight: FontWeight.w500),
-                    //         ),
-                    //       ),
-                    //       Padding(
-                    //         padding: const EdgeInsets.all(8.0),
-                    //         child: Row(
-                    //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    //           children: [
-                    //             Container(
-                    //               child: Row(
-                    //                 children: [
-                    //                   CircleAvatar(
-                    //                     backgroundColor: Colors.redAccent,
-                    //                     radius:
-                    //                         MediaQuery.of(context).size.height /
-                    //                             100,
-                    //                   ),
-                    //                   Text("\tNot Returned")
-                    //                 ],
-                    //               ),
-                    //             ),
-                    //             Container(
-                    //               child: Row(
-                    //                 children: [
-                    //                   CircleAvatar(
-                    //                     backgroundColor: Colors.greenAccent,
-                    //                     radius:
-                    //                         MediaQuery.of(context).size.height /
-                    //                             100,
-                    //                   ),
-                    //                   Text("\tReturned")
-                    //                 ],
-                    //               ),
-                    //             ),
-                    //             Container(
-                    //               child: Row(
-                    //                 children: [
-                    //                   CircleAvatar(
-                    //                     backgroundColor: Colors.orangeAccent,
-                    //                     radius:
-                    //                         MediaQuery.of(context).size.height /
-                    //                             100,
-                    //                   ),
-                    //                   Text("\tConsumed")
-                    //                 ],
-                    //               ),
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                    // Padding(
-                    //   padding: const EdgeInsets.symmetric(horizontal: 8),
-                    //   child: Expanded(
-                    //     child: Container(
-                    //       decoration: BoxDecoration(
-                    //         color: Colors.yellowAccent,
-                    //       ),
-                    //       child: Row(
-                    //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //         children: [
-                    //           Padding(
-                    //             padding: const EdgeInsets.only(left: 10),
-                    //             child: Text("Item Name"),
-                    //           ),
-                    //           Padding(
-                    //             padding: const EdgeInsets.only(right: 10),
-                    //             child: Text("Qty."),
-                    //           ),
-                    //         ],
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
                     // Expanded(
                     //   child: Padding(
                     //     padding: const EdgeInsets.all(8.0),
@@ -300,6 +213,98 @@ class MyInventoryItems extends StatefulWidget {
 class _MyInventoryItemsState extends State<MyInventoryItems> {
   @override
   Widget build(BuildContext context) {
-    return MyScaffold(title: "My Items", myBody: Container());
+    return MyScaffold(
+      title: "My Items",
+      myBody: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 8,
+                  ),
+                  child: Text(
+                    "Your Items",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Colors.redAccent,
+                              radius: MediaQuery.of(context).size.height / 100,
+                            ),
+                            Text("\tNot Returned")
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Colors.greenAccent,
+                              radius: MediaQuery.of(context).size.height / 100,
+                            ),
+                            Text("\tReturned")
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Colors.orangeAccent,
+                              radius: MediaQuery.of(context).size.height / 100,
+                            ),
+                            Text("\tConsumed")
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.yellowAccent,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Text("Item Name"),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: Text("Qty."),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                //upper portion items
+              ],
+            ),
+          ),
+          Expanded(
+            child: ListView(
+              children: [],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
