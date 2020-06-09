@@ -271,23 +271,32 @@ class _MyInventoryItemsState extends State<MyInventoryItems> {
                     ],
                   ),
                 ),
-
+                SizedBox(
+                  height: 5,
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 5,vertical: 8),
                     decoration: BoxDecoration(
-                      color: Colors.yellowAccent,
+                      color: Colors.limeAccent,
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left: 10),
-                          child: Text("Item Name"),
+                          child: Text(
+                            "Item Name",
+                            style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500,),
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(right: 10),
-                          child: Text("Qty."),
+                          child: Text(
+                            "Qty.",
+                            style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500,),
+                          ),
                         ),
                       ],
                     ),
