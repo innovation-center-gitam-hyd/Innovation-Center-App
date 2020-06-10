@@ -46,7 +46,6 @@ class MyInventory extends StatelessWidget {
                         ),
                       ),
                     ),
-
                     Card(
                       elevation: 5,
                       margin: EdgeInsets.all(10),
@@ -70,7 +69,6 @@ class MyInventory extends StatelessWidget {
                         ),
                       ),
                     ),
-
                     isAdmin
                         ? Card(
                             elevation: 5,
@@ -151,7 +149,24 @@ class _MyInventoryListState extends State<MyInventoryList> {
     return MyListItemsScaffold(
       title: "Inventory List",
       items: "200",
-      myBody: Container(),
+      myBody: Column(
+        children: [
+          SizedBox(
+            height: 20,
+            child: Text("Search"),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 60,
+              itemBuilder: (BuildContext context, i) {
+                return Card(
+                  child: Text("$i"),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -228,7 +243,7 @@ class _MyInventoryItemsState extends State<MyInventoryItems> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 5,vertical: 8),
+                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 8),
                     decoration: BoxDecoration(
                       color: Colors.limeAccent,
                     ),
@@ -239,14 +254,20 @@ class _MyInventoryItemsState extends State<MyInventoryItems> {
                           padding: const EdgeInsets.only(left: 10),
                           child: Text(
                             "Item Name",
-                            style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500,),
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(right: 10),
                           child: Text(
                             "Qty.",
-                            style: TextStyle(fontSize: 17,fontWeight: FontWeight.w500,),
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ],
@@ -262,7 +283,7 @@ class _MyInventoryItemsState extends State<MyInventoryItems> {
             child: ListView(
               children: [],
             ),
-          )
+          ),
         ],
       ),
     );
