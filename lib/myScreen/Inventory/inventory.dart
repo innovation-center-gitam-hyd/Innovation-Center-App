@@ -16,7 +16,7 @@ class MyInventory extends StatelessWidget {
           Column(
             children: [
               Container(
-                height: (MediaQuery.of(context).size.height / 7.8),
+                height: (MediaQuery.of(context).size.height / 7.3),
               ),
               Expanded(
                 child: Column(
@@ -102,7 +102,7 @@ class MyInventory extends StatelessWidget {
             ],
           ),
           Container(
-            height: (MediaQuery.of(context).size.height / 7.8),
+            height: (MediaQuery.of(context).size.height / 7.3),
             decoration: BoxDecoration(
               color: Color(0xFF4EAEFF),
               borderRadius: BorderRadius.only(

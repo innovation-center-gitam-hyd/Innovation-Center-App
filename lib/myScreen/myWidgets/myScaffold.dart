@@ -16,11 +16,11 @@ class _MyScaffoldState extends State<MyScaffold> {
         children: [
           Padding(
             padding:
-                EdgeInsets.only(top: MediaQuery.of(context).size.height / 7.8),
+                EdgeInsets.only(top: MediaQuery.of(context).size.height / 7.3),
             child: widget.myBody,
           ),
           Container(
-            height: (MediaQuery.of(context).size.height / 7.8),
+            height: (MediaQuery.of(context).size.height / 7.3),
             decoration: BoxDecoration(
               color: Color(0xFF4EAEFF),
               borderRadius: BorderRadius.only(
@@ -73,11 +73,11 @@ class _MyListItemsScaffoldState extends State<MyListItemsScaffold> {
         children: [
           Padding(
             padding:
-                EdgeInsets.only(top: MediaQuery.of(context).size.height / 5.8),
+                EdgeInsets.only(top: (MediaQuery.of(context).size.height / 7.3)+30),
             child: widget.myBody,
           ),
           Container(
-            height: (MediaQuery.of(context).size.height / 5.8),
+            height: (MediaQuery.of(context).size.height / 7.3)+30,
             decoration: BoxDecoration(
               color: Colors.indigoAccent,
               borderRadius: BorderRadius.only(
@@ -89,23 +89,34 @@ class _MyListItemsScaffoldState extends State<MyListItemsScaffold> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Spacer(
-                    flex: 1,
-                  ),
-                  Text(
-                    "${widget.items} Items found",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  // Spacer(
+                  //   flex: 1,
+                  // ),
+                  // Text(
+                  //   "${widget.items} Items found",
+                  //   textAlign: TextAlign.center,
+                  //   style: TextStyle(color: Colors.white),
+                  // ),
+                  // Padding(
+                  //   padding: EdgeInsets.all(
+                  //     (MediaQuery.of(context).size.height / 200),
+                  //   ),
+                  // ),
+                  Spacer(),
                   Padding(
-                      padding: EdgeInsets.all(
-                          (MediaQuery.of(context).size.height / 200)))
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "${widget.items} Items found",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
           Container(
-            height: (MediaQuery.of(context).size.height / 7.8),
+            height: (MediaQuery.of(context).size.height / 7.3),
             decoration: BoxDecoration(
               color: Color(0xFF4EAEFF),
               borderRadius: BorderRadius.only(
