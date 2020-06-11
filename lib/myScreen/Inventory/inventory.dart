@@ -152,17 +152,27 @@ class _MyInventoryListState extends State<MyInventoryList> {
       items: "200",
       myBody: Column(
         children: [
-          SizedBox(
-            height: 20,
-            child: Text("Search"),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: SizedBox(
+              height: 20,
+              child: Text("Search Bar"),
+            ),
           ),
           Expanded(
             child: ListView.separated(
               padding: EdgeInsets.symmetric(horizontal: 5),
               itemBuilder: (BuildContext conext, i) {
-                return ItemWidget();
+                return ItemWidget(
+                  item: "Item Name",
+                  itemCode: "0001-1-02",
+                  qty: "67",
+                  uqId: "ICINV5d986ee86fcf3",
+                );
               },
-              separatorBuilder: (BuildContext conext, i) => Divider(thickness: 1,),
+              separatorBuilder: (BuildContext conext, i) => Divider(
+                thickness: 1,
+              ),
               itemCount: 10,
             ),
           ),
