@@ -10,129 +10,84 @@ class MyInventory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print(isAdmin);
-    return Scaffold(
-      body: Stack(
+    return MyScaffold(
+      title: "Inventory",
+      myBody: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        //mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Column(
-            children: [
-              Container(
-                height: (MediaQuery.of(context).size.height / 7.3),
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  //mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Card(
-                      elevation: 5,
-                      margin: EdgeInsets.all(10),
-                      child: ListTile(
-                        leading: Icon(Icons.format_list_bulleted),
-                        title: Text(
-                          "Inventory List",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        trailing: Icon(Icons.arrow_forward_ios),
-                        onTap: () => Navigator.push(
-                          context,
-                          PageTransition(
-                            child: MyInventoryList(),
-                            type: PageTransitionType.rightToLeft,
-                            duration: Duration(milliseconds: 150),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Card(
-                      elevation: 5,
-                      margin: EdgeInsets.all(10),
-                      child: ListTile(
-                        leading: Icon(Icons.assignment),
-                        title: Text(
-                          "My Items",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        trailing: Icon(Icons.arrow_forward_ios),
-                        onTap: () => Navigator.push(
-                          context,
-                          PageTransition(
-                            child: MyInventoryItems(),
-                            type: PageTransitionType.rightToLeft,
-                            duration: Duration(milliseconds: 150),
-                          ),
-                        ),
-                      ),
-                    ),
-                    isAdmin
-                        ? Card(
-                            elevation: 5,
-                            margin: EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 5),
-                            child: ListTile(
-                              leading: Icon(Icons.category),
-                              title: Text(
-                                "Inventory Admin",
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              trailing: Icon(Icons.arrow_forward_ios),
-                              onTap: () => Navigator.push(
-                                context,
-                                PageTransition(
-                                  type: PageTransitionType.rightToLeft,
-                                  duration: Duration(milliseconds: 150),
-                                  child: AdminMode(),
-                                ),
-                              ),
-                            ),
-                            //color: Color(0xFFF5F5F5),
-                          )
-                        : Container(),
-                  ],
+          Card(
+            elevation: 5,
+            margin: EdgeInsets.all(10),
+            child: ListTile(
+              leading: Icon(Icons.format_list_bulleted),
+              title: Text(
+                "Inventory List",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
                 ),
-              )
-            ],
-          ),
-          Container(
-            height: (MediaQuery.of(context).size.height / 7.3),
-            decoration: BoxDecoration(
-              color: Color(0xFF4EAEFF),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(15),
-                bottomRight: Radius.circular(15),
               ),
-            ),
-            child: SafeArea(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.white,
-                      //size: 30,
-                    ),
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                  Text(
-                    "Inventory",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                    ),
-                  ),
-                ],
+              trailing: Icon(Icons.arrow_forward_ios),
+              onTap: () => Navigator.push(
+                context,
+                PageTransition(
+                  child: MyInventoryList(),
+                  type: PageTransitionType.rightToLeft,
+                  duration: Duration(milliseconds: 150),
+                ),
               ),
             ),
           ),
+          Card(
+            elevation: 5,
+            margin: EdgeInsets.all(10),
+            child: ListTile(
+              leading: Icon(Icons.assignment),
+              title: Text(
+                "My Items",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              trailing: Icon(Icons.arrow_forward_ios),
+              onTap: () => Navigator.push(
+                context,
+                PageTransition(
+                  child: MyInventoryItems(),
+                  type: PageTransitionType.rightToLeft,
+                  duration: Duration(milliseconds: 150),
+                ),
+              ),
+            ),
+          ),
+          isAdmin
+              ? Card(
+                  elevation: 5,
+                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  child: ListTile(
+                    leading: Icon(Icons.category),
+                    title: Text(
+                      "Inventory Admin",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    trailing: Icon(Icons.arrow_forward_ios),
+                    onTap: () => Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.rightToLeft,
+                        duration: Duration(milliseconds: 150),
+                        child: AdminMode(),
+                      ),
+                    ),
+                  ),
+                  //color: Color(0xFFF5F5F5),
+                )
+              : Container(),
         ],
       ),
     );
