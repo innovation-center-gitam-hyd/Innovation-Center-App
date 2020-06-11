@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ic_inventory/myScreen/Inventory/inventoryAdmin.dart';
+import 'package:ic_inventory/myScreen/myWidgets/itemWidget.dart';
 import 'package:ic_inventory/myScreen/myWidgets/myScaffold.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -156,13 +157,13 @@ class _MyInventoryListState extends State<MyInventoryList> {
             child: Text("Search"),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: 60,
-              itemBuilder: (BuildContext context, i) {
-                return Card(
-                  child: Text("$i"),
-                );
+            child: ListView.separated(
+              padding: EdgeInsets.symmetric(horizontal: 5),
+              itemBuilder: (BuildContext conext, i) {
+                return ItemWidget();
               },
+              separatorBuilder: (BuildContext conext, i) => Divider(thickness: 1,),
+              itemCount: 10,
             ),
           ),
         ],
