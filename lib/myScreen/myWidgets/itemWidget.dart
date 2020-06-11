@@ -11,10 +11,31 @@ class ItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: ListTile(
-        title: Text("$item"),
+        onTap: () {},
+        title: Text(
+          "$item",
+          style: TextStyle(
+            fontSize: 19,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
         isThreeLine: true,
-        subtitle: Text("$uqId \n$itemCode"),
-        trailing: Text("$qty"),
+        subtitle: RichText(
+          text: TextSpan(
+            style: TextStyle(color: Colors.black87, fontSize: 14.5),
+            children: [
+              TextSpan(text: "$uqId", style: TextStyle(color: Colors.black)),
+              TextSpan(text: "\n$itemCode")
+            ],
+          ),
+        ),
+        trailing: Text(
+          "$qty",
+          style: TextStyle(
+            fontSize: 19,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
       ),
     );
   }
