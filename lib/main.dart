@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        accentColor: Colors.transparent,
+        accentColor: Colors.grey,
       ),
       home: MyHomePage(),
     );
