@@ -5,7 +5,6 @@ import 'package:page_transition/page_transition.dart';
 
 class MyInventory extends StatelessWidget {
   final bool isAdmin;
-  //MyInventory(this._isAdmin);
   MyInventory({@required this.isAdmin});
   @override
   Widget build(BuildContext context) {
@@ -106,8 +105,9 @@ class MyInventory extends StatelessWidget {
             decoration: BoxDecoration(
               color: Color(0xFF4EAEFF),
               borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(15),
-                  bottomRight: Radius.circular(15)),
+                bottomLeft: Radius.circular(15),
+                bottomRight: Radius.circular(15),
+              ),
             ),
             child: SafeArea(
               child: Row(
