@@ -164,3 +164,17 @@ class _ReturnInventoryState extends State<ReturnInventory> {
     );
   }
 }
+
+class UpdateInventory extends StatefulWidget {
+  @override
+  _UpdateInventoryState createState() => _UpdateInventoryState();
+}
+
+class _UpdateInventoryState extends State<UpdateInventory> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      
+    );
+  }
+}
