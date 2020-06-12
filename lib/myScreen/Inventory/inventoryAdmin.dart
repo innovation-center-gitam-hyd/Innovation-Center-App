@@ -53,13 +53,13 @@ class _AdminModeState extends State<AdminMode> {
           Container(
             child: GestureDetector(
               onTap: () => Navigator.push(
-                      context,
-                      PageTransition(
-                        type: PageTransitionType.rightToLeft,
-                        duration: Duration(milliseconds: 150),
-                        child: ReturnInventory(),
-                      ),
-                    ),
+                context,
+                PageTransition(
+                  type: PageTransitionType.rightToLeft,
+                  duration: Duration(milliseconds: 150),
+                  child: ReturnInventory(),
+                ),
+              ),
               child: Card(
                 elevation: 5,
                 child: Column(
@@ -83,7 +83,14 @@ class _AdminModeState extends State<AdminMode> {
           ),
           Container(
             child: GestureDetector(
-              onTap: () => print("Add Inventory"),
+              onTap: () => Navigator.push(
+                context,
+                PageTransition(
+                  type: PageTransitionType.rightToLeft,
+                  duration: Duration(milliseconds: 150),
+                  child: AddInventory(),
+                ),
+              ),
               child: Card(
                 elevation: 5,
                 child: Column(
