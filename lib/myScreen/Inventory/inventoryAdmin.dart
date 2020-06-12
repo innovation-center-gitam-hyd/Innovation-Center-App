@@ -115,13 +115,13 @@ class _AdminModeState extends State<AdminMode> {
           Container(
             child: GestureDetector(
               onTap: () => Navigator.push(
-                      context,
-                      PageTransition(
-                        type: PageTransitionType.rightToLeft,
-                        duration: Duration(milliseconds: 150),
-                        child: UpdateInventory(),
-                      ),
-                    ),
+                context,
+                PageTransition(
+                  type: PageTransitionType.rightToLeft,
+                  duration: Duration(milliseconds: 150),
+                  child: UpdateInventory(),
+                ),
+              ),
               child: Card(
                 elevation: 5,
                 child: Column(
@@ -173,7 +173,7 @@ class _AddInventoryState extends State<AddInventory> {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-      title: "Lend Inventory",
+      title: "Add Inventory",
       myBody: Container(),
     );
   }
@@ -188,7 +188,7 @@ class _ReturnInventoryState extends State<ReturnInventory> {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-      title: "Lend Inventory",
+      title: "Return Inventory",
       myBody: Container(),
     );
   }
@@ -203,7 +203,7 @@ class _UpdateInventoryState extends State<UpdateInventory> {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-      title: "Lend Inventory",
+      title: "Update Inventory",
       myBody: Container(),
     );
   }
