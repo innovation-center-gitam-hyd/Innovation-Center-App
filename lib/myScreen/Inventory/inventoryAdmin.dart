@@ -52,7 +52,14 @@ class _AdminModeState extends State<AdminMode> {
           ),
           Container(
             child: GestureDetector(
-              onTap: () => print("Return Inventory Item"),
+              onTap: () => Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.rightToLeft,
+                        duration: Duration(milliseconds: 150),
+                        child: ReturnInventory(),
+                      ),
+                    ),
               child: Card(
                 elevation: 5,
                 child: Column(
