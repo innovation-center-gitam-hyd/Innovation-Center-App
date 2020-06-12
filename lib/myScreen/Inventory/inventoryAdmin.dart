@@ -173,8 +173,9 @@ class UpdateInventory extends StatefulWidget {
 class _UpdateInventoryState extends State<UpdateInventory> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return MyScaffold(
+      title: "Lend Inventory",
+      myBody: Container(),
     );
   }
 }
