@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ic_inventory/myScreen/myWidgets/myScaffold.dart';
+import 'package:page_transition/page_transition.dart';
 
 class AdminMode extends StatefulWidget {
   @override
@@ -20,7 +21,14 @@ class _AdminModeState extends State<AdminMode> {
         children: [
           Container(
             child: GestureDetector(
-              onTap: () => print("Lend Inventory Item"),
+              onTap: () => Navigator.push(
+                context,
+                PageTransition(
+                  type: PageTransitionType.rightToLeft,
+                  duration: Duration(milliseconds: 150),
+                  child: LendInventory(),
+                ),
+              ),
               child: Card(
                 elevation: 5,
                 child: Column(
