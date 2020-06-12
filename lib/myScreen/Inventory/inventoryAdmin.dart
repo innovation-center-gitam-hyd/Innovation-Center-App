@@ -134,3 +134,18 @@ class _LendInventoryState extends State<LendInventory> {
     );
   }
 }
+
+class AddInventory extends StatefulWidget {
+  @override
+  _AddInventoryState createState() => _AddInventoryState();
+}
+
+class _AddInventoryState extends State<AddInventory> {
+  @override
+  Widget build(BuildContext context) {
+    return MyScaffold(
+      title: "Lend Inventory",
+      myBody: Container(),
+    );
+  }
+}
