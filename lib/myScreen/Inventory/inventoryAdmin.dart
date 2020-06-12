@@ -119,3 +119,18 @@ class _AdminModeState extends State<AdminMode> {
     );
   }
 }
+
+class LendInventory extends StatefulWidget {
+  @override
+  _LendInventoryState createState() => _LendInventoryState();
+}
+
+class _LendInventoryState extends State<LendInventory> {
+  @override
+  Widget build(BuildContext context) {
+    return MyScaffold(
+      title: "Lend Inventory",
+      myBody: Container(),
+    );
+  }
+}
