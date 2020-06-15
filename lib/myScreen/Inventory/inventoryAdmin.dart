@@ -208,6 +208,3 @@ class _UpdateInventoryState extends State<UpdateInventory> {
     );
   }
 }
-
-
-
