@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:qr_flutter/qr_flutter.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 class ItemWidget extends StatelessWidget {
   final String item, uqId, itemCode, qty;
@@ -13,7 +13,10 @@ class ItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: ListTile(
-        onTap: () {},
+        onTap: () => showDialog(
+          context: context,
+          builder: (context) => QrDialog(uqId: uqId,),
+        ),
         title: Text(
           "$item",
           style: TextStyle(
@@ -37,6 +40,43 @@ class ItemWidget extends StatelessWidget {
             fontSize: 19,
             fontWeight: FontWeight.w500,
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class QrDialog extends StatelessWidget {
+  final String uqId;
+  QrDialog({@required this.uqId});
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ListTile(
+              title: Text(
+                "Scan QR-Code",
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w600,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            QrImage(
+              data: '$uqId',
+              size: 200,
+            ),
+            SizedBox(
+              height: 20,
+            )
+          ],
         ),
       ),
     );
