@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import 'package:qr_flutter/qr_flutter.dart';
 
 class ItemWidget extends StatelessWidget {
   final String item, uqId, itemCode, qty;
@@ -7,6 +8,7 @@ class ItemWidget extends StatelessWidget {
       @required this.uqId,
       @required this.itemCode,
       @required this.qty});
+
   @override
   Widget build(BuildContext context) {
     return Container(
