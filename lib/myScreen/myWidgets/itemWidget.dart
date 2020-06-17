@@ -46,6 +46,15 @@ class ItemWidget extends StatelessWidget {
   }
 }
 
+class DueItemWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      
+    );
+  }
+}
+
 class QrDialog extends StatelessWidget {
   final String uqId;
   QrDialog({@required this.uqId});
