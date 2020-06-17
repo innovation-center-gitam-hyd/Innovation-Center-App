@@ -58,6 +58,8 @@ class DueItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      //color: Colors.blue,
+      padding: EdgeInsets.symmetric(horizontal: 8),
       child: ListTile(
         onTap: () => showDialog(
           context: context,
