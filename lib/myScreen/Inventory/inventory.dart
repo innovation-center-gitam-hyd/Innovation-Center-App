@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:ic_inventory/myScreen/Inventory/inventoryAdmin.dart';
 import 'package:ic_inventory/myScreen/myWidgets/itemWidget.dart';
@@ -251,11 +253,18 @@ class _MyInventoryItemsState extends State<MyInventoryItems> {
               child: ListView.builder(
                 itemCount: 5,
                 itemBuilder: (context, i) {
+
+                  //--Random Status-----------------
+                  var randomizer=new Random();
+                  var numStatus=randomizer.nextInt(2);
+                  //------------------------------------
+
                   return DueItemWidget(
                     item: "Item Name",
                     itemCode: "0001-1-02",
                     qty: "67",
                     uqId: "ICINV5d986ee86fcf3",
+                    status: numStatus,
                   );
                 },
               ),
