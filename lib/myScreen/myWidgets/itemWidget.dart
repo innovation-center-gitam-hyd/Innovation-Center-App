@@ -72,13 +72,12 @@ class DueItemWidget extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
-        isThreeLine: true,
+        isThreeLine: false,
         subtitle: RichText(
           text: TextSpan(
             style: TextStyle(color: Colors.black87, fontSize: 14.5),
             children: [
               TextSpan(text: "$uqId", style: TextStyle(color: Colors.black)),
-              TextSpan(text: "\n$itemCode")
             ],
           ),
         ),
