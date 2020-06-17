@@ -61,7 +61,7 @@ class DueItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     print(status);
     return Container(
-      //color: Colors.blue,
+      color: status==0?Colors.redAccent:(status==1?Colors.greenAccent:Colors.orangeAccent),
       padding: EdgeInsets.symmetric(horizontal: 8),
       child: ListTile(
         onTap: () => showDialog(
