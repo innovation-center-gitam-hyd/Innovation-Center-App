@@ -50,13 +50,16 @@ class ItemWidget extends StatelessWidget {
 
 class DueItemWidget extends StatelessWidget {
   final String item, uqId, itemCode, qty;
+  final int status;
   DueItemWidget(
       {@required this.item,
       @required this.uqId,
       @required this.itemCode,
-      @required this.qty});
+      @required this.qty,
+      @required this.status});
   @override
   Widget build(BuildContext context) {
+    print(status);
     return Container(
       //color: Colors.blue,
       padding: EdgeInsets.symmetric(horizontal: 8),
