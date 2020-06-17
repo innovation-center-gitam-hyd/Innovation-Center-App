@@ -256,7 +256,7 @@ class _MyInventoryItemsState extends State<MyInventoryItems> {
 
                   //--Random Status-----------------
                   var randomizer=new Random();
-                  var numStatus=randomizer.nextInt(2);
+                  var numStatus=randomizer.nextInt(3);
                   //------------------------------------
 
                   return DueItemWidget(
