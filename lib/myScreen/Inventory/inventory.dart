@@ -221,7 +221,7 @@ class _MyInventoryItemsState extends State<MyInventoryItems> {
                           child: Text(
                             "Item Name",
                             style: TextStyle(
-                              fontSize: 17,
+                              fontSize: 20,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -231,7 +231,7 @@ class _MyInventoryItemsState extends State<MyInventoryItems> {
                           child: Text(
                             "Qty.",
                             style: TextStyle(
-                              fontSize: 17,
+                              fontSize: 20,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -246,16 +246,19 @@ class _MyInventoryItemsState extends State<MyInventoryItems> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, i) {
-                return DueItemWidget(
-                  item: "Item Name",
-                  itemCode: "0001-1-02",
-                  qty: "67",
-                  uqId: "ICINV5d986ee86fcf3",
-                );
-              },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: ListView.builder(
+                itemCount: 5,
+                itemBuilder: (context, i) {
+                  return DueItemWidget(
+                    item: "Item Name",
+                    itemCode: "0001-1-02",
+                    qty: "67",
+                    uqId: "ICINV5d986ee86fcf3",
+                  );
+                },
+              ),
             ),
           ),
         ],
