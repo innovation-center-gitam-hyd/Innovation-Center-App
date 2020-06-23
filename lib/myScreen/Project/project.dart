@@ -10,7 +10,7 @@ class _MyProjectState extends State<MyProject> {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-      title: "Create new Project",
+      title: "Create Project",
       myBody: Container(),
     );
   }
